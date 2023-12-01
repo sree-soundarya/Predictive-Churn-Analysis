@@ -6,3 +6,4 @@ Ever wondered how streaming platforms keep you hooked? Well, churn prediction is
 
 Now, how do we pull off this streaming magic? 🎩✨ Using the treasure trove of data from Spotflix, we dive deep into user interactions, preferences, and habits. It's like a backstage pass to understand what keeps users binging and what might make them hit pause. Join us on this journey to peek into the future of streaming engagement! 🚀🎬
 
+## Overview 
