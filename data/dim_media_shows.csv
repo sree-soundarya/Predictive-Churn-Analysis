@@ -1,0 +1,45 @@
+show_id,show_primary_title,show_start_year,show_end_year,show_genres,show_average_rating,show_num_votes,original
+1,Game of Thrones,2011,2019.0,"Action,Adventure,Drama",9.4,1570280,Licensed Programming
+3,The Walking Dead,2010,,"Drama,Horror,Thriller",8.3,793062,Licensed Programming
+6,The Big Bang Theory,2007,2019.0,"Comedy,Romance",8.2,656240,Licensed Programming
+7,Stranger Things,2016,,"Drama,Fantasy,Horror",8.9,636155,Licensed Programming
+11,True Detective,2014,,"Crime,Drama,Mystery",9.0,449084,Licensed Programming
+12,House of Cards,2013,2018.0,Drama,8.8,434369,Licensed Programming
+14,Arrow,2012,,"Action,Adventure,Crime",7.6,382520,Licensed Programming
+17,Supernatural,2005,,"Drama,Fantasy,Horror",8.5,355184,Licensed Programming
+18,Vikings,2013,,"Action,Adventure,Drama",8.6,348206,Licensed Programming
+19,Black Mirror,2011,,"Drama,Sci-Fi,Thriller",8.9,339407,Licensed Programming
+20,The Simpsons,1989,,"Animation,Comedy",8.7,336290,Licensed Programming
+21,Daredevil,2015,2018.0,"Action,Crime,Drama",8.7,332609,Licensed Programming
+22,Suits,2011,,"Comedy,Drama",8.5,330361,Licensed Programming
+23,Modern Family,2009,,"Comedy,Romance",8.4,315374,Licensed Programming
+25,South Park,1997,,"Animation,Comedy",8.7,303173,Licensed Programming
+27,Family Guy,1999,,"Animation,Comedy",8.2,285281,Licensed Programming
+31,The Flash,2014,,"Action,Adventure,Drama",7.8,279570,Licensed Programming
+34,Arrested Development,2003,,Comedy,8.8,258083,Licensed Programming
+35,Orange Is the New Black,2013,2019.0,"Comedy,Crime,Drama",8.1,258059,Licensed Programming
+37,Better Call Saul,2015,,"Crime,Drama",8.7,253601,Licensed Programming
+38,American Horror Story,2011,,"Drama,Horror,Thriller",8.1,250881,Licensed Programming
+48,Grey's Anatomy,2005,,"Drama,Romance",7.6,215440,Licensed Programming
+55,Gotham,2014,2019.0,"Action,Crime,Drama",7.9,197026,Licensed Programming
+58,Doctor Who,2005,,"Adventure,Drama,Family",8.7,185066,Licensed Programming
+59,Agents of S.H.I.E.L.D.,2013,,"Action,Adventure,Drama",7.5,184955,Licensed Programming
+62,The 100,2014,,"Drama,Mystery,Sci-Fi",7.7,180846,Licensed Programming
+64,Jessica Jones,2015,2019.0,"Action,Crime,Drama",8.0,178057,Licensed Programming
+66,Shameless,2011,,"Comedy,Drama",8.7,172465,Licensed Programming
+67,It's Always Sunny in Philadelphia,2005,,Comedy,8.8,172292,Licensed Programming
+71,The Blacklist,2013,,"Crime,Drama,Mystery",8.1,161752,Licensed Programming
+73,Lucifer,2015,,"Crime,Drama,Fantasy",8.2,160356,Licensed Programming
+74,Brooklyn Nine-Nine,2013,,"Comedy,Crime",8.4,157121,Licensed Programming
+78,The Punisher,2017,2019.0,"Action,Adventure,Crime",8.6,152682,Licensed Programming
+80,Money Heist,2017,,"Action,Crime,Mystery",8.6,144291,Licensed Programming
+87,Criminal Minds,2005,,"Crime,Drama,Mystery",8.1,139594,Licensed Programming
+90,Dark,2017,,"Crime,Drama,Mystery",8.7,129899,Licensed Programming
+91,The Handmaid's Tale,2017,,"Drama,Sci-Fi,Thriller",8.5,127709,Licensed Programming
+93,Attack on Titan,2013,,"Action,Adventure,Animation",8.8,125485,Licensed Programming
+95,Archer,2009,,"Action,Animation,Comedy",8.6,125164,Licensed Programming
+98,The Haunting of Hill House,2018,,"Drama,Horror,Mystery",8.7,120676,Licensed Programming
+1000,Brokers,2018,,"Action,Adventure",6.1,160000,Original Programming
+1001,Coder Contest,2018,2019.0,"Action,Adventure",6.5,95000,Original Programming
+1002,Wonder Woman,2019,,"Action,Adventure",9.3,730000,Original Programming
+1003,Color Me Dead,2019,,"Action,Adventure",8.9,613000,Original Programming

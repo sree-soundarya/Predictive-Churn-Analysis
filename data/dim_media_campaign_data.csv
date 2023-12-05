@@ -1,0 +1,43 @@
+record_id,campaign_key,offer,show_id,show_name
+1,0,1 Month Free,0,Organic
+2,18060001,1 Month Free,38,American Horror Story
+3,18060000,1 Month Free,37,Better Call Saul
+4,0,1 Month Free,0,Organic
+5,18070001,1 Month Free,38,American Horror Story
+6,18070000,1 Month Free,3,The Walking Dead
+7,0,1 Month Free,0,Organic
+8,18080001,1 Month Free,1000,Brokers
+9,18080000,1 Month Free,3,The Walking Dead
+10,0,1 Month Free,0,Organic
+11,18090000,1 Month Free,3,The Walking Dead
+12,18090001,1 Month Free,1000,Brokers
+13,0,1 Month Free,0,Organic
+14,18100000,1 Month Free,3,The Walking Dead
+15,18100001,1 Month Free,38,American Horror Story
+16,0,1 Month Free,0,Organic
+17,18110000,1 Month Free,3,The Walking Dead
+18,18110001,1 Month Free,38,American Horror Story
+19,0,1 Month Free,0,Organic
+20,18120000,1 Month Free,11,True Detective
+21,18120001,1 Month Free,1001,Coder Contest
+22,0,1 Month Free,0,Organic
+23,19010000,1 Month Free,11,True Detective
+24,19010001,1 Month Free,1002,Wonder Woman
+25,0,1 Month Free,0,Organic
+26,19020000,1 Month Free,11,True Detective
+27,19020001,1 Month Free,1002,Wonder Woman
+28,0,1 Month Free,0,Organic
+29,19030000,1 Month Free,1002,Wonder Woman
+30,19030001,1 Month Free,1003,Color Me Dead
+31,0,1 Month Free,0,Organic
+32,19040000,1 Month Free,1,Game of Thrones
+33,19040001,1 Month Free,1003,Color Me Dead
+34,0,1 Month Free,0,Organic
+35,19050000,1 Month Free,1,Game of Thrones
+36,19050001,1 Month Free,19,Black Mirror
+37,0,1 Month Free,0,Organic
+38,19060000,1 Month Free,1,Game of Thrones
+39,19060001,1 Month Free,91,The Handmaid's Tale
+40,0,1 Month Free,0,Organic
+41,19070000,1 Month Free,1,Game of Thrones
+42,19070001,1 Month Free,35,Orange Is the New Black
