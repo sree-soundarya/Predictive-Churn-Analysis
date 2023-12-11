@@ -1,0 +1,309 @@
+guid: 766a6660-25f1-4e6b-bcbb-f6eeb5b47e92
+worksheet:
+  name: Spotflix_forecast
+  description: contains only 100 customers data
+  tables:
+  - name: FORECASTED_CHURN_FOR_100_CX_IDS
+  - name: PREDICTED_DATA
+  - name: dim_media_customers
+  - name: dim_media_episodes
+  - name: dim_media_shows
+  - name: fact_media_show_events
+  joins:
+  - name: FORECASTED_CHURN_FOR_100_CX_IDS_to_dim_media_customers
+    source: FORECASTED_CHURN_FOR_100_CX_IDS
+    destination: dim_media_customers
+    type: INNER
+    is_one_to_one: false
+  - name: dim_media_customers_to_PREDICTED_DATA
+    source: dim_media_customers
+    destination: PREDICTED_DATA
+    type: LEFT_OUTER
+    is_one_to_one: true
+  - name: fact_media_show_events_to_dim_media_shows
+    source: fact_media_show_events
+    destination: dim_media_shows
+    type: INNER
+    is_one_to_one: false
+  - name: fact_media_show_events_to_dim_media_customers
+    source: fact_media_show_events
+    destination: dim_media_customers
+    type: LEFT_OUTER
+    is_one_to_one: false
+  - name: fact_media_show_events_to_dim_media_episodes
+    source: fact_media_show_events
+    destination: dim_media_episodes
+    type: LEFT_OUTER
+    is_one_to_one: false
+  table_paths:
+  - id: FORECASTED_CHURN_FOR_100_CX_IDS_1
+    table: FORECASTED_CHURN_FOR_100_CX_IDS
+    join_path:
+    - {}
+  - id: PREDICTED_DATA_1
+    table: PREDICTED_DATA
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+    - join:
+      - FORECASTED_CHURN_FOR_100_CX_IDS_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+  - id: dim_media_customers_1
+    table: dim_media_customers
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_customers
+    - join:
+      - FORECASTED_CHURN_FOR_100_CX_IDS_to_dim_media_customers
+  - id: dim_media_customers_2
+    table: dim_media_customers
+    join_path:
+    - join:
+      - FORECASTED_CHURN_FOR_100_CX_IDS_to_dim_media_customers
+  - id: dim_media_episodes_1
+    table: dim_media_episodes
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_episodes
+  - id: dim_media_shows_1
+    table: dim_media_shows
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_shows
+  - id: fact_media_show_events_1
+    table: fact_media_show_events
+    join_path:
+    - {}
+  formulas:
+  - name: Date
+    expr: "add_days ( [FORECASTED_CHURN_FOR_100_CX_IDS_1::viewdate] , diff_days ( today ( ) , 07/26/2019 ) )"
+    was_auto_generated: false
+  - name: average_viewtime
+    expr: "average ( [FORECASTED_CHURN_FOR_100_CX_IDS_1::viewruntime] )"
+    was_auto_generated: false
+  - name: churn_date
+    expr: "if ( [FORECASTED_CHURN_FOR_100_CX_IDS_1::viewruntime] <= group_average ( [FORECASTED_CHURN_FOR_100_CX_IDS_1::viewruntime] , [FORECASTED_CHURN_FOR_100_CX_IDS_1::customer_id] ) ) then [dim_media_customers_2::closedate] = [FORECASTED_CHURN_FOR_100_CX_IDS_1::viewdate] else [dim_media_customers_2::closedate] = [dim_media_customers_2::closedate]"
+    was_auto_generated: false
+  worksheet_columns:
+  - name: Viewdate
+    column_id: FORECASTED_CHURN_FOR_100_CX_IDS_1::viewdate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Watchdate
+      - Viewingdate
+      synonym_type: AUTO_GENERATED
+  - name: Viewruntime
+    column_id: FORECASTED_CHURN_FOR_100_CX_IDS_1::viewruntime
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Duration
+      - Length
+      synonym_type: AUTO_GENERATED
+  - name: Date
+    formula_id: Date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Day
+      - Calendar
+      synonym_type: AUTO_GENERATED
+  - name: Customer Id
+    column_id: dim_media_customers_1::customer_id
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Client Id
+      - Customer Number
+      synonym_type: AUTO_GENERATED
+  - name: Customer Name
+    column_id: dim_media_customers_1::customer_name
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Client Name
+      - Account Name
+      synonym_type: AUTO_GENERATED
+  - name: Gender
+    column_id: dim_media_customers_1::gender
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Sex
+      synonym_type: AUTO_GENERATED
+  - name: Age
+    column_id: dim_media_customers_1::age
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Years
+      synonym_type: AUTO_GENERATED
+  - name: Age Group
+    column_id: dim_media_customers_1::age_group
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Generation
+      - Demographic
+      synonym_type: AUTO_GENERATED
+  - name: Street Address
+    column_id: dim_media_customers_1::street_address
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Road Address
+      - Street Number
+      synonym_type: AUTO_GENERATED
+  - name: City
+    column_id: dim_media_customers_1::city
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Municipality
+      - Metropolis
+      synonym_type: AUTO_GENERATED
+  - name: State
+    column_id: dim_media_customers_1::state
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Province
+      - Commonwealth
+      synonym_type: AUTO_GENERATED
+  - name: Zipcode
+    column_id: dim_media_customers_1::zipcode
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Postal Code
+      - ZIP Code
+      synonym_type: AUTO_GENERATED
+  - name: County
+    column_id: dim_media_customers_1::county
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Parish
+      - District
+      synonym_type: AUTO_GENERATED
+  - name: Latitude
+    column_id: dim_media_customers_1::latitude
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Latitudinal Position
+      - Latitudinal Coordinate
+      is_additive: true
+      synonym_type: AUTO_GENERATED
+  - name: Longitude
+    column_id: dim_media_customers_1::longitude
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Longitudinal Position
+      - Longitudinal Coordinate
+      is_additive: true
+      synonym_type: AUTO_GENERATED
+  - name: Region
+    column_id: dim_media_customers_1::region
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Area
+      - Zone
+      synonym_type: AUTO_GENERATED
+  - name: Opendate
+    column_id: dim_media_customers_1::opendate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Opening Date
+      - Start Date
+      synonym_type: AUTO_GENERATED
+  - name: Closedate
+    column_id: dim_media_customers_1::closedate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Closure Date
+      - End Date
+      synonym_type: AUTO_GENERATED
+  - name: Probability
+    column_id: PREDICTED_DATA_1::Probability
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Likelihood
+      - Chance
+      synonym_type: AUTO_GENERATED
+  - name: Predicted Churn
+    column_id: PREDICTED_DATA_1::Predicted_CHURN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Forecasted Churn
+      - Projected Churn
+      synonym_type: AUTO_GENERATED
+  - name: average_viewtime
+    formula_id: average_viewtime
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: churn_date
+    formula_id: churn_date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Termination Date
+      - Cancellation Date
+      synonym_type: AUTO_GENERATED
+  - name: Show Id
+    column_id: fact_media_show_events_1::show_id
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonym_type: AUTO_GENERATED
+  - name: Episode Id
+    column_id: fact_media_show_events_1::episode_id
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonym_type: AUTO_GENERATED
+  - name: Show Primary Title
+    column_id: dim_media_shows_1::show_primary_title
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Show Name
+      - Show Title
+      synonym_type: AUTO_GENERATED
+  - name: Episode Primary Title
+    column_id: dim_media_episodes_1::episode_primary_title
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Episode Name
+      - Episode Title
+      synonym_type: AUTO_GENERATED
+  properties:
+    is_bypass_rls: false
+    join_progressive: true

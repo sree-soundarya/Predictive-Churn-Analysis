@@ -1,0 +1,1038 @@
+guid: dfe2ea8d-a8aa-4945-bd29-0fa9e4a886b1
+worksheet:
+  name: Spotflix_Cx_Shows
+  tables:
+  - name: CALENDAR
+  - name: CUSTOMER_COUNT_C_DATE
+  - name: CUSTOMER_COUNT_RANDOM
+  - name: DF_WITH_ALL_COLUMNS
+  - name: FORECASTED_CHURN_EACH_DAY
+  - name: FORECASTED_DATA_FOR_1M_6M
+  - name: PREDICTED_DATA
+  - name: dim_media_campaign_data
+  - name: dim_media_customers
+  - name: dim_media_date_ref
+  - name: dim_media_episodes
+  - name: dim_media_shows
+  - name: fact_media_campaign_data
+  - name: fact_media_show_events
+  - name: fact_media_subscription_events
+  joins:
+  - name: CALENDAR_to_CUSTOMER_COUNT_C_DATE
+    source: CALENDAR
+    destination: CUSTOMER_COUNT_C_DATE
+    type: INNER
+    is_one_to_one: true
+  - name: CUSTOMER_COUNT_C_DATE_to_dim_media_date_ref
+    source: CUSTOMER_COUNT_C_DATE
+    destination: dim_media_date_ref
+    type: OUTER
+    is_one_to_one: true
+  - name: CUSTOMER_COUNT_RANDOM_to_dim_media_date_ref
+    source: CUSTOMER_COUNT_RANDOM
+    destination: dim_media_date_ref
+    type: INNER
+    is_one_to_one: true
+  - name: FORECASTED_CHURN_EACH_DAY_to_dim_media_customers
+    source: FORECASTED_CHURN_EACH_DAY
+    destination: dim_media_customers
+    type: INNER
+    is_one_to_one: false
+  - name: FORECASTED_DATA_FOR_1M_6M_to_dim_media_customers
+    source: FORECASTED_DATA_FOR_1M_6M
+    destination: dim_media_customers
+    type: INNER
+    is_one_to_one: true
+  - name: dim_media_customers_to_PREDICTED_DATA
+    source: dim_media_customers
+    destination: PREDICTED_DATA
+    type: LEFT_OUTER
+    is_one_to_one: true
+  - name: dim_media_customers_to_DF_WITH_ALL_COLUMNS
+    source: dim_media_customers
+    destination: DF_WITH_ALL_COLUMNS
+    type: INNER
+    is_one_to_one: true
+  - name: fact_media_campaign_data_to_dim_media_campaign_data
+    source: fact_media_campaign_data
+    destination: dim_media_campaign_data
+    type: LEFT_OUTER
+    is_one_to_one: false
+  - name: dim_date_ref
+    source: fact_media_campaign_data
+    destination: dim_media_date_ref
+    type: INNER
+    is_one_to_one: false
+  - name: CALENDAR_to_fact_media_show_events
+    source: fact_media_show_events
+    destination: CALENDAR
+    type: INNER
+    is_one_to_one: false
+  - name: fact_media_show_events_to_dim_media_shows
+    source: fact_media_show_events
+    destination: dim_media_shows
+    type: INNER
+    is_one_to_one: false
+  - name: fact_media_show_events_to_dim_media_customers
+    source: fact_media_show_events
+    destination: dim_media_customers
+    type: LEFT_OUTER
+    is_one_to_one: false
+  - name: fact_media_show_events_to_dim_media_episodes
+    source: fact_media_show_events
+    destination: dim_media_episodes
+    type: LEFT_OUTER
+    is_one_to_one: false
+  - name: fact_media_subscription_events_to_dim_media_customers
+    source: fact_media_subscription_events
+    destination: dim_media_customers
+    type: LEFT_OUTER
+    is_one_to_one: false
+  - name: fact_media_subscription_events_to_fact_media_campaign_data
+    source: fact_media_subscription_events
+    destination: fact_media_campaign_data
+    type: LEFT_OUTER
+    is_one_to_one: false
+  table_paths:
+  - id: CUSTOMER_COUNT_RANDOM_1
+    table: CUSTOMER_COUNT_RANDOM
+    join_path:
+    - {}
+  - id: DF_WITH_ALL_COLUMNS_1
+    table: DF_WITH_ALL_COLUMNS
+    join_path:
+    - join:
+      - FORECASTED_DATA_FOR_1M_6M_to_dim_media_customers
+      - dim_media_customers_to_DF_WITH_ALL_COLUMNS
+    - join:
+      - fact_media_show_events_to_dim_media_customers
+      - dim_media_customers_to_DF_WITH_ALL_COLUMNS
+    - join:
+      - FORECASTED_CHURN_EACH_DAY_to_dim_media_customers
+      - dim_media_customers_to_DF_WITH_ALL_COLUMNS
+    - join:
+      - fact_media_subscription_events_to_dim_media_customers
+      - dim_media_customers_to_DF_WITH_ALL_COLUMNS
+  - id: FORECASTED_CHURN_EACH_DAY_1
+    table: FORECASTED_CHURN_EACH_DAY
+    join_path:
+    - {}
+  - id: FORECASTED_DATA_FOR_1M_6M_1
+    table: FORECASTED_DATA_FOR_1M_6M
+    join_path:
+    - {}
+  - id: PREDICTED_DATA_1
+    table: PREDICTED_DATA
+    join_path:
+    - join:
+      - FORECASTED_DATA_FOR_1M_6M_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+    - join:
+      - fact_media_show_events_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+    - join:
+      - fact_media_subscription_events_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+    - join:
+      - FORECASTED_CHURN_EACH_DAY_to_dim_media_customers
+      - dim_media_customers_to_PREDICTED_DATA
+  - id: dim_media_campaign_data_1
+    table: dim_media_campaign_data
+    join_path:
+    - join:
+      - fact_media_subscription_events_to_fact_media_campaign_data
+      - fact_media_campaign_data_to_dim_media_campaign_data
+  - id: dim_media_customers_1
+    table: dim_media_customers
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_customers
+    - join:
+      - FORECASTED_DATA_FOR_1M_6M_to_dim_media_customers
+    - join:
+      - FORECASTED_CHURN_EACH_DAY_to_dim_media_customers
+    - join:
+      - fact_media_subscription_events_to_dim_media_customers
+  - id: dim_media_date_ref_1
+    table: dim_media_date_ref
+    join_path:
+    - join:
+      - CUSTOMER_COUNT_RANDOM_to_dim_media_date_ref
+    - join:
+      - fact_media_subscription_events_to_fact_media_campaign_data
+      - dim_date_ref
+    - join:
+      - CALENDAR_to_fact_media_show_events
+      - CALENDAR_to_CUSTOMER_COUNT_C_DATE
+      - CUSTOMER_COUNT_C_DATE_to_dim_media_date_ref
+  - id: dim_media_episodes_1
+    table: dim_media_episodes
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_episodes
+  - id: dim_media_shows_1
+    table: dim_media_shows
+    join_path:
+    - join:
+      - fact_media_show_events_to_dim_media_shows
+  - id: fact_media_campaign_data_1
+    table: fact_media_campaign_data
+    join_path:
+    - join:
+      - fact_media_subscription_events_to_fact_media_campaign_data
+  - id: fact_media_show_events_1
+    table: fact_media_show_events
+    join_path:
+    - {}
+  - id: fact_media_subscription_events_1
+    table: fact_media_subscription_events
+    join_path:
+    - {}
+  formulas:
+  - name: Active Subscriber Percentage
+    expr: "( [CUSTOMER_COUNT_RANDOM_1::customer_count] / ( [CUSTOMER_COUNT_RANDOM_1::customer_count] + [CUSTOMER_COUNT_RANDOM_1::churned_customers] ) )"
+    was_auto_generated: false
+  - name: Churn Rate
+    expr: "count_if ( [DF_WITH_ALL_COLUMNS_1::CHURN] = 1 , [DF_WITH_ALL_COLUMNS_1::CHURN] ) / count ( [DF_WITH_ALL_COLUMNS_1::customer_name] )"
+    was_auto_generated: false
+  - name: Date
+    expr: "add_days ( [dim_media_date_ref_1::date] , diff_days ( today ( ) , 07/26/2019 ) )"
+    was_auto_generated: false
+  - name: Num of days on platform
+    expr: "diff_days ( [dim_media_customers_1::closedate] , [dim_media_customers_1::opendate] )"
+    was_auto_generated: false
+  - name: low churn risk customer
+    expr: "count_if ( [PREDICTED_DATA_1::Probability] = 0 and [DF_WITH_ALL_COLUMNS_1::CHURN] != 1 , [DF_WITH_ALL_COLUMNS_1::customer_id] )"
+    was_auto_generated: false
+  worksheet_columns:
+  - name: Record Id
+    column_id: fact_media_show_events_1::record_id
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Record Code
+      synonym_type: AUTO_GENERATED
+  - name: Customer Id
+    column_id: fact_media_show_events_1::customer_id
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Customer Code
+      synonym_type: AUTO_GENERATED
+  - name: Show Id
+    column_id: fact_media_show_events_1::show_id
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Code
+      synonym_type: AUTO_GENERATED
+  - name: Episode Id
+    column_id: fact_media_show_events_1::episode_id
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Code
+      - Episode Keyword
+      synonym_type: AUTO_GENERATED
+  - name: Viewdate
+    column_id: fact_media_show_events_1::viewdate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Viewing Date
+      - View Date
+      synonym_type: AUTO_GENERATED
+  - name: Viewtime
+    column_id: fact_media_show_events_1::viewtime
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Viewing Time
+      - Viewing Length
+      synonym_type: AUTO_GENERATED
+  - name: Viewruntime
+    column_id: fact_media_show_events_1::viewruntime
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - View Duration
+      - Watch Duration
+      synonym_type: AUTO_GENERATED
+  - name: Viewruntimepct
+    column_id: fact_media_show_events_1::viewruntimepct
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Viewing Time Percentage
+      - Viewing Duration Percentage
+      synonym_type: AUTO_GENERATED
+  - name: Customer Name
+    column_id: dim_media_customers_1::customer_name
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Customer Full Name
+      - Customer Complete Name
+      synonym_type: AUTO_GENERATED
+  - name: Gender
+    column_id: dim_media_customers_1::gender
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Sex
+      synonym_type: AUTO_GENERATED
+  - name: Age
+    column_id: dim_media_customers_1::age
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Age Group
+    column_id: dim_media_customers_1::age_group
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Age Range
+      - Age Bracket
+      synonym_type: AUTO_GENERATED
+  - name: Street Address
+    column_id: dim_media_customers_1::street_address
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Street Location
+      - Street Locality
+      synonym_type: AUTO_GENERATED
+  - name: City
+    column_id: dim_media_customers_1::city
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Municipality
+      - Metropolis
+      synonym_type: AUTO_GENERATED
+  - name: State
+    column_id: dim_media_customers_1::state
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Province
+      - Territory
+      synonym_type: AUTO_GENERATED
+  - name: Zipcode
+    column_id: dim_media_customers_1::zipcode
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Postal Code
+      - ZIP Code
+      synonym_type: AUTO_GENERATED
+  - name: County
+    column_id: dim_media_customers_1::county
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - District
+      - Parish
+      synonym_type: AUTO_GENERATED
+  - name: Latitude
+    column_id: dim_media_customers_1::latitude
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Latitudinal Coordinates
+      - Latitudinal Position
+      synonym_type: AUTO_GENERATED
+  - name: Longitude
+    column_id: dim_media_customers_1::longitude
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Longitudinal Coordinates
+      - Longitudinal Position
+      synonym_type: AUTO_GENERATED
+  - name: Region
+    column_id: dim_media_customers_1::region
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Geographical Area
+      - Geographical Zone
+      synonym_type: AUTO_GENERATED
+  - name: Opendate
+    column_id: dim_media_customers_1::opendate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Opening Date
+      - Start Date
+      synonym_type: AUTO_GENERATED
+  - name: Closedate
+    column_id: dim_media_customers_1::closedate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Closure Date
+      - End Date
+      synonym_type: AUTO_GENERATED
+  - name: Campaign Key
+    column_id: fact_media_subscription_events_1::campaign_key
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Campaign Identifier
+      - Campaign Code
+      synonym_type: AUTO_GENERATED
+  - name: Event
+    column_id: fact_media_subscription_events_1::event
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Occurrence Type
+      - Happening Type
+      synonym_type: AUTO_GENERATED
+  - name: Eventdate
+    column_id: fact_media_subscription_events_1::eventdate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Event Date
+      - Occurrence Date
+      synonym_type: AUTO_GENERATED
+  - name: Original
+    column_id: dim_media_shows_1::original
+    properties:
+      column_type: ATTRIBUTE
+  - name: Show Tconst
+    column_id: dim_media_episodes_1::show_tconst
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Show Constant
+      - Show Constant Value
+      synonym_type: AUTO_GENERATED
+  - name: Show Primary Title
+    column_id: dim_media_episodes_1::show_primary_title
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Show Main Title
+      - Show Primary Name
+      synonym_type: AUTO_GENERATED
+  - name: Show Start Year
+    column_id: dim_media_episodes_1::show_start_year
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Launch Year
+      - Show Debut Year
+      synonym_type: AUTO_GENERATED
+  - name: Show End Year
+    column_id: dim_media_episodes_1::show_end_year
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Final Date
+      synonym_type: AUTO_GENERATED
+  - name: Show Runtime Minutes
+    column_id: dim_media_episodes_1::show_runtime_minutes
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Duration Minutes
+      - Show Length Minutes
+      synonym_type: AUTO_GENERATED
+  - name: Show Genres
+    column_id: dim_media_episodes_1::show_genres
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Show Categories
+      - Show Types
+      synonym_type: AUTO_GENERATED
+  - name: Show Season Num
+    column_id: dim_media_episodes_1::show_season_num
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Season Number
+      - Season Count
+      synonym_type: AUTO_GENERATED
+  - name: Episode Num
+    column_id: dim_media_episodes_1::episode_num
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Count
+      - Episode Quantity
+      synonym_type: AUTO_GENERATED
+  - name: Episode Primary Title
+    column_id: dim_media_episodes_1::episode_primary_title
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Episode Name
+      - Episode Title
+      synonym_type: AUTO_GENERATED
+  - name: Episode Airdate
+    column_id: dim_media_episodes_1::episode_airdate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Broadcast Date
+      - Episode Air Date
+      synonym_type: AUTO_GENERATED
+  - name: Episode Airtime
+    column_id: dim_media_episodes_1::episode_airtime
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Release Time
+      synonym_type: AUTO_GENERATED
+  - name: Episode Runtime
+    column_id: dim_media_episodes_1::episode_runtime
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Duration
+      - Episode Length
+      synonym_type: AUTO_GENERATED
+  - name: Episode Airstamp
+    column_id: dim_media_episodes_1::episode_airstamp
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Transmission Time
+      synonym_type: AUTO_GENERATED
+  - name: Show Average Rating
+    column_id: dim_media_episodes_1::show_average_rating
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Rating Average
+      - Show Rating Mean
+      synonym_type: AUTO_GENERATED
+  - name: Show Num Votes
+    column_id: dim_media_episodes_1::show_num_votes
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Number of Votes
+      - Votes Count
+      synonym_type: AUTO_GENERATED
+  - name: Episode Average Rating
+    column_id: dim_media_episodes_1::episode_average_rating
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Mean Rating
+      - Episode Median Rating
+      synonym_type: AUTO_GENERATED
+  - name: Episode Num Votes
+    column_id: dim_media_episodes_1::episode_num_votes
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Episode Number Votes
+      - Episode Count Votes
+      synonym_type: AUTO_GENERATED
+  - name: Show Max Episode Num
+    column_id: dim_media_episodes_1::show_max_episode_num
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Maximum Episode Number
+      - Show Maximum Episode Count
+      synonym_type: AUTO_GENERATED
+  - name: Show Max Season Num
+    column_id: dim_media_episodes_1::show_max_season_num
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Maximum Season Number
+      - Show Maximum Season Count
+      synonym_type: AUTO_GENERATED
+  - name: Show Final Season
+    column_id: dim_media_episodes_1::show_final_season
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Last Season
+      - Show Closing Season
+      synonym_type: AUTO_GENERATED
+  - name: Show Season Finale
+    column_id: dim_media_episodes_1::show_season_finale
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Season End Date
+      - Season Closing Date
+      synonym_type: AUTO_GENERATED
+  - name: Show Series Finale
+    column_id: dim_media_episodes_1::show_series_finale
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Show Termination Date
+      synonym_type: AUTO_GENERATED
+  - name: Show Season Premiere
+    column_id: dim_media_episodes_1::show_season_premiere
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Season Start Date
+      - Season Launch Date
+      synonym_type: AUTO_GENERATED
+  - name: Show Series Premiere
+    column_id: dim_media_episodes_1::show_series_premiere
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Series Start Date
+      - Series Launch Date
+      synonym_type: AUTO_GENERATED
+  - name: Offer
+    column_id: dim_media_campaign_data_1::offer
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Promotion
+      - Discount
+      synonym_type: AUTO_GENERATED
+  - name: Show Name
+    column_id: dim_media_campaign_data_1::show_name
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Show Title
+      - Show Label
+      synonym_type: AUTO_GENERATED
+  - name: Impressions
+    column_id: fact_media_campaign_data_1::impressions
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Views
+      - Impacts
+      synonym_type: AUTO_GENERATED
+  - name: Clicks
+    column_id: fact_media_campaign_data_1::clicks
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Taps
+      - Hits
+      synonym_type: AUTO_GENERATED
+  - name: Conversions
+    column_id: fact_media_campaign_data_1::conversions
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Conversion Rate
+      - Conversion Count
+      synonym_type: AUTO_GENERATED
+  - name: Predicted Churn
+    column_id: PREDICTED_DATA_1::Predicted_CHURN
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Forecasted Churn
+      - Projected Churn
+      synonym_type: AUTO_GENERATED
+  - name: Churn
+    column_id: DF_WITH_ALL_COLUMNS_1::CHURN
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Attrition
+      - Defection
+      synonym_type: AUTO_GENERATED
+  - name: Viewing Frequency
+    column_id: DF_WITH_ALL_COLUMNS_1::VIEWING_FREQUENCY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Viewing Occurrence
+      - Viewing Instance
+      synonym_type: AUTO_GENERATED
+  - name: Total View Duration
+    column_id: DF_WITH_ALL_COLUMNS_1::TOTAL_VIEW_DURATION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Total Viewing Time
+      - Total Viewing Duration
+      synonym_type: AUTO_GENERATED
+  - name: Total No Of Shows
+    column_id: DF_WITH_ALL_COLUMNS_1::TOTAL_NO_OF_SHOWS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Total Shows
+      - Total Programs
+      synonym_type: AUTO_GENERATED
+  - name: Churn Rate
+    formula_id: Churn Rate
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Attrition Rate
+      - Cancellation Rate
+      synonym_type: AUTO_GENERATED
+  - name: Date
+    formula_id: Date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Day
+      synonym_type: AUTO_GENERATED
+  - name: Probability
+    column_id: PREDICTED_DATA_1::Probability
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Likelihood
+      - Chance
+      synonym_type: AUTO_GENERATED
+  - name: date_ref
+    column_id: dim_media_date_ref_1::date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Reference Date
+      - Reference Point
+      synonym_type: AUTO_GENERATED
+  - name: low churn risk customer
+    formula_id: low churn risk customer
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Low Attrition Risk Customer
+      - Low Cancellation Risk Customer
+      synonym_type: AUTO_GENERATED
+  - name: Customer Count
+    column_id: CUSTOMER_COUNT_RANDOM_1::customer_count
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Customer Number
+      - Customer Volume
+      synonym_type: AUTO_GENERATED
+  - name: No. of Customers Joined
+    column_id: CUSTOMER_COUNT_RANDOM_1::new_customers_joined
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Customers Joined
+      - Clients Joined
+      synonym_type: AUTO_GENERATED
+  - name: No. of Customers Churned
+    column_id: CUSTOMER_COUNT_RANDOM_1::churned_customers
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Number of Customers Quit
+      - Number of Customers Left
+      synonym_type: AUTO_GENERATED
+  - name: Active Subscriber Percentage
+    formula_id: Active Subscriber Percentage
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Active Subscriber Ratio
+      - Active Subscriber Proportion
+      synonym_type: AUTO_GENERATED
+  - name: Num of days on platform
+    formula_id: Num of days on platform
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - days on platform
+      - days on service
+      synonym_type: AUTO_GENERATED
+  - name: Forecast 1m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::forecast_1m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Prediction 1m
+      - Foretelling 1m
+      synonym_type: AUTO_GENERATED
+  - name: Difference 1m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::difference_1m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Variance 1m
+      - Delta 1m
+      synonym_type: AUTO_GENERATED
+  - name: Percentage Change 1m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::percentage_change_1m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Percent Change 1m
+      - Proportion Change 1m
+      synonym_type: AUTO_GENERATED
+  - name: Churn Risk 1m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::churn_risk_1m
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Abandonment Risk 1m
+      - Retention Risk 1m
+      synonym_type: AUTO_GENERATED
+  - name: Forecast 3m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::forecast_3m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Forecast 3 Months
+      - Forecast Quarter
+      synonym_type: AUTO_GENERATED
+  - name: Difference 3m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::difference_3m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Variance 3m
+      - Discrepancy 3m
+      synonym_type: AUTO_GENERATED
+  - name: Percentage Change 3m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::percentage_change_3m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Variation 3m
+      - Fluctuation 3m
+      synonym_type: AUTO_GENERATED
+  - name: Churn Risk 3m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::churn_risk_3m
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Cancellation Risk 3m
+      - Drop Risk 3m
+      synonym_type: AUTO_GENERATED
+  - name: Forecast 6m_1
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::forecast_6m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Forecast Six Months One
+      - Prediction Six Months One
+      synonym_type: AUTO_GENERATED
+  - name: Difference 6m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::difference_6m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Difference 6 Months
+      - Difference Half Year
+      synonym_type: AUTO_GENERATED
+  - name: Percentage Change 6m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::percentage_change_6m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Proportion Change 6m
+      - Ratio Change 6m
+      synonym_type: AUTO_GENERATED
+  - name: Churn Risk 6m
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::churn_risk_6m
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Cancellation Risk 6m
+      - Dropout Risk 6m
+      synonym_type: AUTO_GENERATED
+  - name: No Days On Platform
+    column_id: FORECASTED_DATA_FOR_1M_6M_1::No_days_on_platform
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Time On Platform
+      - Duration On Platform
+      synonym_type: AUTO_GENERATED
+  - name: Forecast 6m
+    column_id: FORECASTED_CHURN_EACH_DAY_1::forecast_6m
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Projection 6m
+      - Prediction 6m
+      synonym_type: AUTO_GENERATED
+  - name: Forecasted_dates
+    column_id: FORECASTED_CHURN_EACH_DAY_1::viewdate
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Projected_dates
+      - Predicted_dates
+      synonym_type: AUTO_GENERATED
+  - name: Total View Duration_1
+    column_id: FORECASTED_CHURN_EACH_DAY_1::total_view_duration
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Overall View Duration_1
+      - Total View Time_1
+      synonym_type: AUTO_GENERATED
+  - name: Difference
+    column_id: FORECASTED_CHURN_EACH_DAY_1::difference
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Variance
+      - Discrepancy
+      synonym_type: AUTO_GENERATED
+  - name: Percentage Change
+    column_id: FORECASTED_CHURN_EACH_DAY_1::percentage_change
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Proportion Change
+      - Ratio Change
+      synonym_type: AUTO_GENERATED
+  - name: Churn Risk
+    column_id: FORECASTED_CHURN_EACH_DAY_1::churn_risk
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Abandonment Risk
+      - Defection Risk
+      synonym_type: AUTO_GENERATED
+  - name: Gender1
+    column_id: DF_WITH_ALL_COLUMNS_1::gender
+    properties:
+      column_type: ATTRIBUTE
+      synonym_type: AUTO_GENERATED
+  - name: Age1
+    column_id: DF_WITH_ALL_COLUMNS_1::age
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonym_type: AUTO_GENERATED
+  - name: Age Group1
+    column_id: DF_WITH_ALL_COLUMNS_1::age_group
+    properties:
+      column_type: ATTRIBUTE
+      synonym_type: AUTO_GENERATED
+  properties:
+    is_bypass_rls: false
+    join_progressive: true

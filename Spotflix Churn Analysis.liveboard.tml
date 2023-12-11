@@ -74,7 +74,7 @@ liveboard:
           "y":
           - Churn Rate
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Churn Rate\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"d7acd82a-a16c-4762-9357-637428e62997\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Rate\"],\"isOpposite\": false}},{\"id\": \"af22624f-57df-406f-9eb3-b48f0aa8f706\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Churn Rate\",\"color\": \"#2770ef\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Churn Rate\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"d7acd82a-a16c-4762-9357-637428e62997\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Rate\"],\"isOpposite\": false}},{\"id\": \"af22624f-57df-406f-9eb3-b48f0aa8f706\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"seriesColors\": [{\"serieName\": \"Churn Rate\",\"color\": \"#FCC838\"}],\"systemSeriesColors\": [{\"serieName\": \"Churn Rate\",\"color\": \"#2770ef\"}]}"
       display_mode: CHART_MODE
     viz_guid: be7a0b18-64d7-4d37-bf5e-1739fcf5f101
   - id: Viz_3
@@ -1340,6 +1340,7 @@ liveboard:
         ordered_column_ids:
         - Churn Risk 1m
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Churn Risk 1m\",\"columnProperty\": {}}]}"
       chart:
         type: KPI
         chart_columns:
@@ -1348,7 +1349,7 @@ liveboard:
         - "y":
           - Churn Risk 1m
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Churn Risk 1m\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a6ae1217-8978-44d4-b4f8-eb7486d5e310\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Risk 1m\"],\"isOpposite\": false}},{\"id\": \"7fb7ee77-a29a-4ebd-9c19-540e1eaba727\",\"properties\": {\"axisType\": \"X\"}}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Churn Risk 1m\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"IS\",\"value\": \"Low Risk\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#06BF7F\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}},{\"operator\": \"IS\",\"value\": \"Medium Risk\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#FCC838\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}},{\"operator\": \"IS\",\"value\": \"High Risk\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#F04152\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}}]}}}],\"axisProperties\": [{\"id\": \"a6ae1217-8978-44d4-b4f8-eb7486d5e310\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Risk 1m\"],\"isOpposite\": false}},{\"id\": \"7fb7ee77-a29a-4ebd-9c19-540e1eaba727\",\"properties\": {\"axisType\": \"X\"}}]}"
       display_mode: CHART_MODE
     viz_guid: 5568efe3-22bd-4be6-915f-768df374bf4f
   - id: Viz_39
@@ -1413,7 +1414,7 @@ liveboard:
           "y":
           - churn rate based on viewing time
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"churn rate based on viewing time\",\"columnProperty\": {}},{\"columnId\": \"Day(forecasted dates f)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f9e94548-36c3-485d-9d78-d5ef1d4245f7\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"churn rate based on viewing time\"],\"isOpposite\": false}},{\"id\": \"e4bb1554-821e-4029-b9db-884889c22b14\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(forecasted dates f)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"churn rate based on viewing time\",\"color\": \"#8C62F5\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"showLinearRegressionLine\": false,\"chartSpecific\": {\"markersEnabled\": false,\"dataFieldArea\": \"column\"},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Day(forecasted dates f)\",\"columnProperty\": {}},{\"columnId\": \"churn rate based on viewing time\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"f9e94548-36c3-485d-9d78-d5ef1d4245f7\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"churn rate based on viewing time\"],\"isOpposite\": false}},{\"id\": \"e4bb1554-821e-4029-b9db-884889c22b14\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(forecasted dates f)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"churn rate based on viewing time\",\"color\": \"#8C62F5\"}]}"
       display_mode: CHART_MODE
     viz_guid: dd924bb4-20b2-4738-828a-70f8d8a5cc0a
   filters:
@@ -1436,7 +1437,7 @@ liveboard:
         x: 0
         "y": 11
         height: 2
-        width: 4
+        width: 6
       - visualization_id: Viz_2
         x: 8
         "y": 7
@@ -1558,10 +1559,10 @@ liveboard:
         height: 4
         width: 4
       - visualization_id: Viz_36
-        x: 4
+        x: 6
         "y": 11
         height: 2
-        width: 4
+        width: 6
       - visualization_id: Viz_37
         x: 0
         "y": 25
