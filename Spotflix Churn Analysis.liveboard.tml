@@ -1,0 +1,1632 @@
+guid: 0f24ad5e-5d3b-4999-8fb6-bb496e2391bc
+liveboard:
+  name: Spotflix Churn Analysis
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Overall Churn Rate
+      description: Chart displays the overall percentage of customers lost (churned)
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Churn Rate]"
+      answer_columns:
+      - name: Churn Rate
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 2.0
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Churn Rate
+          show_headline: false
+        ordered_column_ids:
+        - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Churn Rate\",\"columnProperty\": {}}]}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Churn Rate
+        axis_configs:
+        - "y":
+          - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Churn Rate\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"fafffad1-81af-4f94-9436-0d56e79c7fc1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Rate\"],\"isOpposite\": false}},{\"id\": \"164fac3d-a410-42ef-812c-e7d853c814ae\",\"properties\": {\"axisType\": \"X\"}}]}"
+      display_mode: CHART_MODE
+    viz_guid: d4499247-06ba-458c-aae9-9920b7706f2e
+  - id: Viz_2
+    answer:
+      name: Monthly Churn Percentage
+      description: Chart represents the percentage of customers who churned each month
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Churn Rate] [Date] [Date].monthly"
+      answer_columns:
+      - name: Churn Rate
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 2.0
+          isCategoryEditable: true
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          show_headline: false
+        - column_id: Churn Rate
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Churn Rate
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Churn Rate\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"d7acd82a-a16c-4762-9357-637428e62997\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Rate\"],\"isOpposite\": false}},{\"id\": \"af22624f-57df-406f-9eb3-b48f0aa8f706\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Churn Rate\",\"color\": \"#2770ef\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: be7a0b18-64d7-4d37-bf5e-1739fcf5f101
+  - id: Viz_3
+    answer:
+      name: Number of Churners by Age Group
+      description: Chart represents the count of churners specific to each age group
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: churn_ rate
+        name: churn_ rate
+        expr: "( count_if ( [Churn] = 1 , [Customer Name] ) ) / ( count ( [Customer Name] ) )"
+        was_auto_generated: false
+      search_query: "count [Customer Name] [Churn] = 1 [Age Group1]"
+      answer_columns:
+      - name: Number of Customer Name
+      - name: Age Group1
+      table:
+        table_columns:
+        - column_id: Age Group1
+          show_headline: false
+        - column_id: Number of Customer Name
+          show_headline: false
+        ordered_column_ids:
+        - Age Group1
+        - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Age Group1
+        - column_id: Number of Customer Name
+        axis_configs:
+        - x:
+          - Age Group1
+          "y":
+          - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Number of Customer Name\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Age Group1\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"c673d6d1-58fb-4553-a09e-39c96f413bac\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Age Group1\"],\"name\": \"Age Group\"}},{\"id\": \"33934a3b-f044-489d-a1c7-a70165a0d3d2\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Customer Name\"],\"name\": \"Total Customer Count\",\"isOpposite\": false}}],\"seriesColors\": [{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#2E75F0\"},{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"Number of Customer Name\",\"color\": \"#22636B\"}],\"systemSeriesColors\": [{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#2E75F0\"},{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"Number of Customer Name\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 675c6074-287b-4521-b9bf-496143672514
+  - id: Viz_4
+    answer:
+      name: Projection of Viewer Engagement and Identification of High-Risk Customers
+      description: Chart offers a forward-looking projection of viewer engagement for the next month and identifies customers at high risk
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Customer Name] [average_viewtime] [Date] = 'next month' [Viewruntime]"
+      answer_columns:
+      - name: Customer Name
+      - name: average_viewtime
+      - name: Total Viewruntime
+      table:
+        table_columns:
+        - column_id: Customer Name
+          show_headline: false
+        - column_id: average_viewtime
+          show_headline: false
+        - column_id: Total Viewruntime
+          show_headline: false
+        ordered_column_ids:
+        - Customer Name
+        - average_viewtime
+        - Total Viewruntime
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE_STACKED_COLUMN
+        chart_columns:
+        - column_id: Customer Name
+        - column_id: average_viewtime
+        - column_id: Total Viewruntime
+        axis_configs:
+        - x:
+          - Customer Name
+          "y":
+          - Total Viewruntime
+        - x:
+          - Customer Name
+          "y":
+          - average_viewtime
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotState\": {\"fields\": [{\"dataField\": \"Customer Name\",\"sortBy\": \"value\",\"sortBySummaryField\": \"average_viewtime\",\"sortOrder\": \"asc\",\"expanded\": false,\"area\": \"row\"}]},\"isStackedAsPercent\": false,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0,\"removeTrailingZeroes\": false},\"isCategoryEditable\": false},\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Customer Name\",\"columnProperty\": {}},{\"columnId\": \"average_viewtime\",\"columnProperty\": {}},{\"columnId\": \"Total Viewruntime\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"LESS_THAN_EQUAL_TO\",\"value\": \"1500\",\"plotAsBand\": false,\"backgroundFormatType\": \"SOLID\",\"solidBackgroundAttrs\": {\"color\": \"#F04152\"}}]}}}],\"axisProperties\": [{\"id\": \"6a2dd3fb-4c1e-43b2-b472-871d3434cee4\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Customer Name\"]}},{\"id\": \"83c8c457-e647-426b-b3a1-50ebbe3f1a1b\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"average_viewtime\"],\"name\": \"Average View Time (mins)\",\"isOpposite\": false}},{\"id\": \"98c642d0-ae1c-4533-bbdd-16075abf3467\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Viewruntime\"],\"name\": \"Total View Time (mins)\",\"isOpposite\": true}}],\"seriesColors\": [{\"serieName\": \"average_viewtime\",\"color\": \"#FF8142\"},{\"serieName\": \"total viewruntime\",\"color\": \"#369faa\"},{\"serieName\": \"Total Viewruntime\",\"color\": \"#369faa\"},{\"serieName\": \"average_viewtime\",\"color\": \"#FF8142\"}],\"systemSeriesColors\": [{\"serieName\": \"average_viewtime\",\"color\": \"#FF8142\"},{\"serieName\": \"total viewruntime\",\"color\": \"#369faa\"},{\"serieName\": \"Total Viewruntime\",\"color\": \"#369faa\"},{\"serieName\": \"average_viewtime\",\"color\": \"#369faa\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 57dc0236-0a81-4bc8-94c1-ba249ed3ae42
+  - id: Viz_5
+    answer:
+      name: Total Shows and Top Performers Breakdown
+      description: Chart breaks down total shows and highlights top performers with 1.5M+ viewing frequency
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Show Primary Title] [Viewing Frequency]"
+      answer_columns:
+      - name: Show Primary Title
+      - name: Total Viewing Frequency
+      table:
+        table_columns:
+        - column_id: Show Primary Title
+          show_headline: false
+        - column_id: Total Viewing Frequency
+          show_headline: false
+        ordered_column_ids:
+        - Show Primary Title
+        - Total Viewing Frequency
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Show Primary Title
+        - column_id: Total Viewing Frequency
+        axis_configs:
+        - x:
+          - Show Primary Title
+          "y":
+          - Total Viewing Frequency
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Show Primary Title\",\"columnProperty\": {}},{\"columnId\": \"Total Viewing Frequency\",\"columnProperty\": {\"dataLabels\": true,\"conditionalFormatting\": {\"rows\": [{\"operator\": \"GREATER_THAN_EQUAL_TO\",\"value\": \"1500000\",\"plotAsBand\": false,\"backgroundFormatType\": \"SOLID\",\"solidBackgroundAttrs\": {\"color\": \"#8C62F5\"}}]}}}],\"axisProperties\": [{\"id\": \"eecbe1ec-8e15-467d-9845-edfcd1a99d5e\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Viewing Frequency\"],\"isOpposite\": false}},{\"id\": \"83031b58-4d55-4394-a979-3d45c1a94ee6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Show Primary Title\"],\"name\": \"Show Title\"}}],\"seriesColors\": [{\"serieName\": \"3cb59a1c-42fa-4f8d-855d-8aebca15d48d\",\"color\": \"#369faa\"},{\"serieName\": \"8421ff9b-c769-46c5-af38-d20c3089ac09\",\"color\": \"#8C62F5\"},{\"serieName\": \"Total Viewing Frequency\",\"color\": \"#369faa\"}],\"systemSeriesColors\": [{\"serieName\": \"3cb59a1c-42fa-4f8d-855d-8aebca15d48d\",\"color\": \"#369faa\"},{\"serieName\": \"8421ff9b-c769-46c5-af38-d20c3089ac09\",\"color\": \"#8C62F5\"},{\"serieName\": \"Total Viewing Frequency\",\"color\": \"#FF8142\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: b4f673a9-181d-4704-8db3-6a18fba81809
+  - id: Viz_6
+    answer:
+      name: Total Customer Base
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "unique count [Customer Id]"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      table:
+        table_columns:
+        - column_id: Unique Number of Customer Id
+          show_headline: false
+        ordered_column_ids:
+        - Unique Number of Customer Id
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: b8e30970-7beb-4704-a718-ad71a6020f51
+  - id: Viz_7
+    answer:
+      name: Active Customer Base
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "unique count [Customer Id] [Churn] [Churn].0"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Churn
+      table:
+        table_columns:
+        - column_id: Churn
+          show_headline: false
+        - column_id: Unique Number of Customer Id
+          show_headline: false
+        ordered_column_ids:
+        - Churn
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Churn
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {}},{\"columnId\": \"Churn\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"2bef4850-ca9c-40c3-829b-38482fe2b225\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"c7ce6f58-ed58-4635-a7bc-e25a66feea80\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Customer Id\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 2bad6101-c3ed-4a94-a571-c5134443d2b2
+  - id: Viz_8
+    answer:
+      name: Customers Churned
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "unique count [Customer Id] [Churn] [Churn].1"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Churn
+      table:
+        table_columns:
+        - column_id: Churn
+          show_headline: false
+        - column_id: Unique Number of Customer Id
+          show_headline: false
+        ordered_column_ids:
+        - Churn
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Churn
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {}},{\"columnId\": \"Churn\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"2bef4850-ca9c-40c3-829b-38482fe2b225\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"c7ce6f58-ed58-4635-a7bc-e25a66feea80\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Customer Id\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: d4de52d0-ae08-4ba7-868d-6119bd9ed18c
+  - id: Viz_9
+    answer:
+      name: Churned vs. Active Customer Breakdown
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: Churn Label
+        name: Churn Label
+        expr: "if ( [Churn] = 1 ) then \"churned\" else \"active\" "
+        was_auto_generated: false
+      search_query: "unique count [Customer Id] [Churn] [Churn Label]"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Churn
+      - name: Churn Label
+      table:
+        table_columns:
+        - column_id: Churn
+          show_headline: false
+        - column_id: Churn Label
+          show_headline: false
+        - column_id: Unique Number of Customer Id
+          show_headline: false
+        ordered_column_ids:
+        - Churn
+        - Churn Label
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Churn
+        - column_id: Churn Label
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - x:
+          - Churn Label
+          "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Churn\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Churn Label\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"7a72e486-185a-48de-b878-65162320f9b1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"3adcb94e-9aea-4e50-8fec-8dcf29288a27\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Churn Label\"]}}],\"seriesColors\": [{\"serieName\": \"Unique Number of Customer Id\",\"color\": \"#48D1E0\"},{\"serieName\": \"0\",\"color\": \"#06BF7F\"},{\"serieName\": \"1\",\"color\": \"#F04152\"}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Customer Id\",\"color\": \"#48D1E0\"},{\"serieName\": \"0\",\"color\": \"#06BF7F\"},{\"serieName\": \"1\",\"color\": \"#F04152\"},{\"serieName\": \"churned\",\"color\": \"#48D1E0\"},{\"serieName\": \"not churned\",\"color\": \"#369faa\"},{\"serieName\": \"active\",\"color\": \"#369faa\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 0f8c54cd-b12b-4a16-9a76-dae84d238ad9
+  - id: Viz_10
+    answer:
+      name: Churn Ratio by Year
+      description: Chart shows the ratio of churned customers to the total customer base for each year
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Churn Rate] [Date].yearly"
+      answer_columns:
+      - name: Churn Rate
+      - name: Year(Date)
+      table:
+        table_columns:
+        - column_id: Year(Date)
+          show_headline: false
+        - column_id: Churn Rate
+          show_headline: false
+        ordered_column_ids:
+        - Year(Date)
+        - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Year(Date)
+        - column_id: Churn Rate
+        axis_configs:
+        - x:
+          - Year(Date)
+          "y":
+          - Churn Rate
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Churn Rate\",\"columnProperty\": {}},{\"columnId\": \"Year(Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"3cf8b780-88e7-4e27-be7f-f5fbc568b207\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Rate\"],\"isOpposite\": false}},{\"id\": \"4e4eca22-d44f-4950-8fa0-86639a957303\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Year(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Churn Rate\",\"color\": \"#2770ef\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: f9a6b40d-5512-42a5-9f65-d6b62fa6b377
+  - id: Viz_11
+    answer:
+      name: Customer Interactions Over Time
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Customer Id] [Date] [Date].weekly [Viewruntime] [Date] before 'next 1 year'"
+      answer_columns:
+      - name: Customer Id
+      - name: Week(Date)
+      - name: Total Viewruntime
+      table:
+        table_columns:
+        - column_id: Customer Id
+          show_headline: false
+        - column_id: Week(Date)
+          show_headline: false
+        - column_id: Total Viewruntime
+          show_headline: false
+        ordered_column_ids:
+        - Customer Id
+        - Week(Date)
+        - Total Viewruntime
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Customer Id
+        - column_id: Week(Date)
+        - column_id: Total Viewruntime
+        axis_configs:
+        - x:
+          - Week(Date)
+          "y":
+          - Total Viewruntime
+          color:
+          - Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Customer Id\",\"columnProperty\": {}},{\"columnId\": \"Week(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Viewruntime\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"71681a57-beec-4936-b9b7-4e93e50de11c\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Viewruntime\"],\"isOpposite\": false}},{\"id\": \"fb82f214-7562-4bb9-8500-c26e7e799fa7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Viewruntime\",\"color\": \"#06BF7F\"},{\"serieName\": \"1\",\"color\": \"#369faa\"},{\"serieName\": \"2\",\"color\": \"#48D1E0\"},{\"serieName\": \"3\",\"color\": \"#FCC838\"},{\"serieName\": \"4\",\"color\": \"#06BF7F\"},{\"serieName\": \"5\",\"color\": \"#8C62F5\"},{\"serieName\": \"6\",\"color\": \"#FF8142\"},{\"serieName\": \"7\",\"color\": \"#86c5cc\"},{\"serieName\": \"8\",\"color\": \"#B5ECF2\"},{\"serieName\": \"9\",\"color\": \"#FDE9AF\"},{\"serieName\": \"10\",\"color\": \"#9BE5CB\"},{\"serieName\": \"11\",\"color\": \"#D1C0FB\"},{\"serieName\": \"12\",\"color\": \"#FFCCB3\"},{\"serieName\": \"13\",\"color\": \"#2b7f88\"},{\"serieName\": \"14\",\"color\": \"#369FAA\"},{\"serieName\": \"15\",\"color\": \"#BF982A\"},{\"serieName\": \"16\",\"color\": \"#049160\"},{\"serieName\": \"17\",\"color\": \"#6A4ABA\"},{\"serieName\": \"18\",\"color\": \"#C26232\"},{\"serieName\": \"19\",\"color\": \"#5eb2bb\"},{\"serieName\": \"20\",\"color\": \"#82DFE9\"},{\"serieName\": \"21\",\"color\": \"#FCD977\"},{\"serieName\": \"22\",\"color\": \"#56D3A8\"},{\"serieName\": \"23\",\"color\": \"#B094F8\"},{\"serieName\": \"24\",\"color\": \"#FFA97E\"},{\"serieName\": \"25\",\"color\": \"#205f66\"},{\"serieName\": \"26\",\"color\": \"#22636B\"},{\"serieName\": \"27\",\"color\": \"#785F1A\"},{\"serieName\": \"28\",\"color\": \"#025B3C\"},{\"serieName\": \"29\",\"color\": \"#422E75\"},{\"serieName\": \"30\",\"color\": \"#7A3D1F\"},{\"serieName\": \"31\",\"color\": \"#369faa\"},{\"serieName\": \"32\",\"color\": \"#48D1E0\"},{\"serieName\": \"33\",\"color\": \"#FCC838\"},{\"serieName\": \"34\",\"color\": \"#06BF7F\"},{\"serieName\": \"35\",\"color\": \"#8C62F5\"},{\"serieName\": \"36\",\"color\": \"#FF8142\"},{\"serieName\": \"37\",\"color\": \"#86c5cc\"},{\"serieName\": \"38\",\"color\": \"#B5ECF2\"},{\"serieName\": \"39\",\"color\": \"#FDE9AF\"},{\"serieName\": \"40\",\"color\": \"#9BE5CB\"},{\"serieName\": \"41\",\"color\": \"#D1C0FB\"},{\"serieName\": \"42\",\"color\": \"#FFCCB3\"},{\"serieName\": \"43\",\"color\": \"#2b7f88\"},{\"serieName\": \"44\",\"color\": \"#369FAA\"},{\"serieName\": \"45\",\"color\": \"#BF982A\"},{\"serieName\": \"46\",\"color\": \"#049160\"},{\"serieName\": \"47\",\"color\": \"#6A4ABA\"},{\"serieName\": \"48\",\"color\": \"#C26232\"},{\"serieName\": \"49\",\"color\": \"#5eb2bb\"},{\"serieName\": \"50\",\"color\": \"#82DFE9\"},{\"serieName\": \"51\",\"color\": \"#FCD977\"},{\"serieName\": \"52\",\"color\": \"#56D3A8\"},{\"serieName\": \"53\",\"color\": \"#B094F8\"},{\"serieName\": \"54\",\"color\": \"#FFA97E\"},{\"serieName\": \"55\",\"color\": \"#205f66\"},{\"serieName\": \"56\",\"color\": \"#22636B\"},{\"serieName\": \"57\",\"color\": \"#785F1A\"},{\"serieName\": \"58\",\"color\": \"#025B3C\"},{\"serieName\": \"59\",\"color\": \"#422E75\"},{\"serieName\": \"60\",\"color\": \"#7A3D1F\"},{\"serieName\": \"61\",\"color\": \"#369faa\"},{\"serieName\": \"62\",\"color\": \"#48D1E0\"},{\"serieName\": \"63\",\"color\": \"#FCC838\"},{\"serieName\": \"64\",\"color\": \"#06BF7F\"},{\"serieName\": \"65\",\"color\": \"#8C62F5\"},{\"serieName\": \"66\",\"color\": \"#FF8142\"},{\"serieName\": \"67\",\"color\": \"#86c5cc\"},{\"serieName\": \"68\",\"color\": \"#B5ECF2\"},{\"serieName\": \"69\",\"color\": \"#FDE9AF\"},{\"serieName\": \"70\",\"color\": \"#9BE5CB\"},{\"serieName\": \"71\",\"color\": \"#D1C0FB\"},{\"serieName\": \"72\",\"color\": \"#FFCCB3\"},{\"serieName\": \"73\",\"color\": \"#2b7f88\"},{\"serieName\": \"74\",\"color\": \"#369FAA\"},{\"serieName\": \"75\",\"color\": \"#BF982A\"},{\"serieName\": \"76\",\"color\": \"#049160\"},{\"serieName\": \"77\",\"color\": \"#6A4ABA\"},{\"serieName\": \"78\",\"color\": \"#C26232\"},{\"serieName\": \"79\",\"color\": \"#5eb2bb\"},{\"serieName\": \"80\",\"color\": \"#82DFE9\"},{\"serieName\": \"81\",\"color\": \"#FCD977\"},{\"serieName\": \"82\",\"color\": \"#56D3A8\"},{\"serieName\": \"83\",\"color\": \"#B094F8\"},{\"serieName\": \"84\",\"color\": \"#FFA97E\"},{\"serieName\": \"85\",\"color\": \"#205f66\"},{\"serieName\": \"86\",\"color\": \"#22636B\"},{\"serieName\": \"87\",\"color\": \"#785F1A\"},{\"serieName\": \"88\",\"color\": \"#025B3C\"},{\"serieName\": \"89\",\"color\": \"#422E75\"},{\"serieName\": \"90\",\"color\": \"#7A3D1F\"},{\"serieName\": \"91\",\"color\": \"#369faa\"},{\"serieName\": \"92\",\"color\": \"#48D1E0\"},{\"serieName\": \"93\",\"color\": \"#FCC838\"},{\"serieName\": \"94\",\"color\": \"#06BF7F\"},{\"serieName\": \"95\",\"color\": \"#8C62F5\"},{\"serieName\": \"96\",\"color\": \"#FF8142\"},{\"serieName\": \"97\",\"color\": \"#86c5cc\"},{\"serieName\": \"98\",\"color\": \"#B5ECF2\"},{\"serieName\": \"99\",\"color\": \"#FDE9AF\"},{\"serieName\": \"100\",\"color\": \"#9BE5CB\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 2a2e595e-9515-4073-8e76-e64c78438168
+  - id: Viz_12
+    viz_guid: a6a4110a-9fd7-4f7f-8f34-95043e230a80
+    note_tile:
+      html_parsed_string: <p class="theme-module__editor-paragraph"><img id="e982bc2b-78b3-4030-922c-d314b29d6bc1" alt="UPLOAD" height="139" width="655"></p>
+  - id: Viz_13
+    answer:
+      name: Churned Customers Distribution by Age and Gender
+      description: The chart represents the distribution of churned customers across different age ranges and gender
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "count [Churn] [Age Group] [Churn] [Gender1] [Age Group1]"
+      answer_columns:
+      - name: Number of Churn
+      - name: Age Group
+      - name: Churn
+      - name: Gender1
+      - name: Age Group1
+      table:
+        table_columns:
+        - column_id: Age Group
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Churn
+          show_headline: false
+        - column_id: Gender1
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Age Group1
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Number of Churn
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Age Group
+        - Churn
+        - Gender1
+        - Age Group1
+        - Number of Churn
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"showTableFooter\": true}"
+      chart:
+        type: STACKED_COLUMN
+        chart_columns:
+        - column_id: Age Group
+        - column_id: Churn
+        - column_id: Gender1
+        - column_id: Age Group1
+        - column_id: Number of Churn
+        axis_configs:
+        - x:
+          - Churn
+          "y":
+          - Number of Churn
+          color:
+          - Age Group
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": true,\"yGridlineEnabled\": false},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Age Group\",\"columnProperty\": {}},{\"columnId\": \"Number of Churn\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Churn\",\"columnProperty\": {}},{\"columnId\": \"Gender1\",\"columnProperty\": {}},{\"columnId\": \"Age Group1\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"c9fec4c2-246a-45c4-84df-2d8a399f6a52\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Churn\"],\"isOpposite\": false}},{\"id\": \"1b0364e4-7407-4c7b-8eac-21966184b6e5\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Churn\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Number of Churn\",\"color\": \"#369faa\"},{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 72d90f9b-b215-43e5-b5c0-3caddc0446bf
+  - id: Viz_14
+    answer:
+      name: Number of Churners by Gender
+      description: Chart represents the count of churners specific to each gender
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "count [Customer Name] [Gender1] [Churn] = 1"
+      answer_columns:
+      - name: Number of Customer Name
+      - name: Gender1
+      table:
+        table_columns:
+        - column_id: Gender1
+          show_headline: false
+        - column_id: Number of Customer Name
+          show_headline: false
+        ordered_column_ids:
+        - Gender1
+        - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Gender1
+        - column_id: Number of Customer Name
+        axis_configs:
+        - x:
+          - Gender1
+          "y":
+          - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Gender1\",\"columnProperty\": {}},{\"columnId\": \"Number of Customer Name\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"996d205a-f2ec-47f3-96fe-f80c95675893\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Customer Name\"],\"isOpposite\": false}},{\"id\": \"095b660e-6ead-42bb-a688-3be02abadc21\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Gender1\"]}}],\"seriesColors\": [{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#2E75F0\"},{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"male\",\"color\": \"#369faa\"},{\"serieName\": \"female\",\"color\": \"#FCC838\"}],\"systemSeriesColors\": [{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#2E75F0\"},{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"male\",\"color\": \"#369faa\"},{\"serieName\": \"female\",\"color\": \"#FCC838\"},{\"serieName\": \"Number of Customer Name\",\"color\": \"#FF8142\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 3d97dbb0-1f1f-43bd-b27d-4b5b65e8edc0
+  - id: Viz_15
+    answer:
+      name: Number of Churners by Region
+      description: chart represents number of churners specific to each region
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Region] count [Customer Name] [Churn] = 1"
+      answer_columns:
+      - name: Region
+      - name: Number of Customer Name
+      table:
+        table_columns:
+        - column_id: Region
+          show_headline: false
+        - column_id: Number of Customer Name
+          show_headline: false
+        ordered_column_ids:
+        - Region
+        - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Region
+        - column_id: Number of Customer Name
+        axis_configs:
+        - x:
+          - Region
+          "y":
+          - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Region\",\"columnProperty\": {}},{\"columnId\": \"Number of Customer Name\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"b4dcce18-6cdf-477b-baff-06825abbdd03\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Region\"]}},{\"id\": \"21199b5f-d168-4516-ac2a-4a601cfa700e\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Customer Name\"],\"name\": \"Total Customer Count\",\"isOpposite\": false}}],\"seriesColors\": [{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"female\",\"color\": \"#48D1E0\"},{\"serieName\": \"male\",\"color\": \"#369faa\"},{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#86c5cc\"},{\"serieName\": \"Number of Customer Name\",\"color\": \"#48D1E0\"}],\"systemSeriesColors\": [{\"serieName\": \"18-24\",\"color\": \"#06BF7F\"},{\"serieName\": \"25-34\",\"color\": \"#FCC838\"},{\"serieName\": \"35-44\",\"color\": \"#82DFE9\"},{\"serieName\": \"45-54\",\"color\": \"#48D1E0\"},{\"serieName\": \"55-64\",\"color\": \"#5eb2bb\"},{\"serieName\": \"65+\",\"color\": \"#369faa\"},{\"serieName\": \"female\",\"color\": \"#48D1E0\"},{\"serieName\": \"male\",\"color\": \"#369faa\"},{\"serieName\": \"4305b76f-c78a-4cea-896e-e19479227e93\",\"color\": \"#86c5cc\"},{\"serieName\": \"Number of Customer Name\",\"color\": \"#141198\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 9cbcb274-4767-43fc-9ac3-a726db63c7ae
+  - id: Viz_16
+    answer:
+      name: Total Episodes
+      description: Chart represents the total count of all episodes
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "count [Episode Primary Title]"
+      answer_columns:
+      - name: Number of Episode Primary Title
+      table:
+        table_columns:
+        - column_id: Number of Episode Primary Title
+          show_headline: false
+        ordered_column_ids:
+        - Number of Episode Primary Title
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Number of Episode Primary Title
+        axis_configs:
+        - "y":
+          - Number of Episode Primary Title
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: d35b3368-e0f3-45fa-b2f5-feadd4f74196
+  - id: Viz_17
+    answer:
+      name: Total Shows
+      description: Chart represents the total count of all shows
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "unique count [Show Primary Title]"
+      answer_columns:
+      - name: Unique Number of Show Primary Title
+      table:
+        table_columns:
+        - column_id: Unique Number of Show Primary Title
+          show_headline: false
+        ordered_column_ids:
+        - Unique Number of Show Primary Title
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Show Primary Title
+        axis_configs:
+        - "y":
+          - Unique Number of Show Primary Title
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 0601205b-7a6f-45ec-8aef-787c179399c7
+  - id: Viz_18
+    answer:
+      name: Count of Customers at Low Churn Risk
+      description: Count of customers with probability less than 50%
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: Risk
+        name: Risk
+        expr: "if ( [Probability] >= 0.7 ) then \"high risk\" else if ( [Probability] >= 0.5 and [Probability] < 0.7 ) then \"medium risk\" else if ( [Probability] > 0 and [Probability] < 0.5 ) then \"low risk\" else \"0 risk\""
+        was_auto_generated: false
+      search_query: "unique count [Customer Id] [Churn] != 1 [Risk] [Risk].'0 risk' [Risk].'low risk'"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Risk
+      table:
+        table_columns:
+        - column_id: Risk
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Unique Number of Customer Id
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Risk
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true,\"showTableFooter\": true}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Risk
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Risk\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"IS_NOT_EMPTY\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#06BF7F\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}}]}}}],\"axisProperties\": [{\"id\": \"63656345-0a5b-4e9c-94e8-851e305ca202\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"68a8d51f-cd34-4847-951a-5629f5ff986f\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"e2848cb8-25f4-49c8-8991-b923c47bd41e\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 32df2d89-e881-48c6-a60c-436d50db4e82
+  - id: Viz_19
+    answer:
+      name: Count of Customers at Medium Churn Risk
+      description: Count of customers with probability between 50% and 70%
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: Risk
+        name: Risk
+        expr: "if ( [Probability] >= 0.7 ) then \"high risk\" else if ( [Probability] >= 0.5 and [Probability] < 0.7 ) then \"medium risk\" else if ( [Probability] > 0 and [Probability] < 0.5 ) then \"low risk\" else \"0 risk\""
+        was_auto_generated: false
+      search_query: "unique count [Customer Id] [Churn] != 1 [Risk] [Risk].'medium risk'"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Risk
+      table:
+        table_columns:
+        - column_id: Risk
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Unique Number of Customer Id
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Risk
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true,\"showTableFooter\": true}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Risk
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Risk\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"IS_NOT_EMPTY\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#FCC838\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}}]}}}],\"axisProperties\": [{\"id\": \"63656345-0a5b-4e9c-94e8-851e305ca202\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"68a8d51f-cd34-4847-951a-5629f5ff986f\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"e2848cb8-25f4-49c8-8991-b923c47bd41e\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: a79c632f-5048-4313-9a57-bf8caa4775ca
+  - id: Viz_20
+    answer:
+      name: Count of Customers at High Churn Risk
+      description: Count of customers with probability greater than 70%
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: Risk
+        name: Risk
+        expr: "if ( [Probability] >= 0.7 ) then \"high risk\" else if ( [Probability] >= 0.5 and [Probability] < 0.7 ) then \"medium risk\" else if ( [Probability] > 0 and [Probability] < 0.5 ) then \"low risk\" else \"0 risk\""
+        was_auto_generated: false
+      search_query: "unique count [Customer Id] [Churn] != 1 [Risk] [Risk].'high risk'"
+      answer_columns:
+      - name: Unique Number of Customer Id
+      - name: Risk
+      table:
+        table_columns:
+        - column_id: Risk
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Unique Number of Customer Id
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Risk
+        - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true,\"showTableFooter\": true}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Risk
+        - column_id: Unique Number of Customer Id
+        axis_configs:
+        - "y":
+          - Unique Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Risk\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Customer Id\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"IS_NOT_EMPTY\",\"plotAsBand\": false,\"fontProperties\": {\"color\": \"#F04152\",\"bold\": true,\"italic\": false,\"strikeThrough\": false,\"underline\": false}}]}}}],\"axisProperties\": [{\"id\": \"63656345-0a5b-4e9c-94e8-851e305ca202\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"68a8d51f-cd34-4847-951a-5629f5ff986f\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"e2848cb8-25f4-49c8-8991-b923c47bd41e\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: cdbf84ec-ce62-4bcd-ad7f-fcb2c9cdd7ce
+  - id: Viz_21
+    answer:
+      name: Viewing Patterns Among Active and Churned Users
+      description: "Churn =0 --> Active ; \nChurn =1 --> Churned"
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Viewing Frequency] [Churn] = 1 vs [Churn] = 0 [Date] [Date].monthly [Customer Id] [Date] before 'this month'"
+      answer_columns:
+      - name: Month(Date)
+      - name: Viewing Frequency(churn = 0)
+      - name: Viewing Frequency(churn = 1)
+      - name: Customer Id
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Customer Id
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Viewing Frequency(churn = 0)
+          headline_aggregation: TABLE_AGGR
+        - column_id: Viewing Frequency(churn = 1)
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Month(Date)
+        - Customer Id
+        - Viewing Frequency(churn = 0)
+        - Viewing Frequency(churn = 1)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Customer Id
+        - column_id: Viewing Frequency(churn = 0)
+        - column_id: Viewing Frequency(churn = 1)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Viewing Frequency(churn = 1)
+          - Viewing Frequency(churn = 0)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true,\"legendPosition\": \"TOP_LEGEND\"},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Customer Id\",\"columnProperty\": {}},{\"columnId\": \"Viewing Frequency(churn = 0)\",\"columnProperty\": {}},{\"columnId\": \"Viewing Frequency(churn = 1)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"e6c45619-5021-4065-acf5-0ad53ab6f10c\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}},{\"id\": \"3d75d7a7-1728-4e15-b122-ca2006c84c81\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Viewing Frequency(churn = 1)\",\"Viewing Frequency(churn = 0)\"],\"isOpposite\": false}}],\"seriesColors\": [{\"serieName\": \"11f8fc10-3262-5a23-ab75-89b2c0fee15a\",\"color\": \"#06BF7F\"},{\"serieName\": \"5ea372f9-56cc-5ab9-9b3b-83eef8b734cb\",\"color\": \"#06BF7F\"},{\"serieName\": \"Viewing Frequency(churn = 0)\",\"color\": \"#369FAA\"},{\"serieName\": \"Viewing Frequency(churn = 1)\",\"color\": \"#F04152\"},{\"serieName\": \"bda2f4b8-3174-5367-8237-aa5d3a2e5254\",\"color\": \"#FCC838\"},{\"serieName\": \"3ca3fe67-3158-5da9-ae97-274b010f5559\",\"color\": \"#4341ad\"}],\"systemSeriesColors\": [{\"serieName\": \"11f8fc10-3262-5a23-ab75-89b2c0fee15a\",\"color\": \"#06BF7F\"},{\"serieName\": \"3ca3fe67-3158-5da9-ae97-274b010f5559\",\"color\": \"#FCC838\"},{\"serieName\": \"5ea372f9-56cc-5ab9-9b3b-83eef8b734cb\",\"color\": \"#06BF7F\"},{\"serieName\": \"bda2f4b8-3174-5367-8237-aa5d3a2e5254\",\"color\": \"#FCC838\"},{\"serieName\": \"Viewing Frequency(churn = 0)\",\"color\": \"#369faa\"},{\"serieName\": \"Viewing Frequency(churn = 1)\",\"color\": \"#06BF7F\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 260f639e-0647-47d1-85ad-2e7b4369c7df
+  - id: Viz_22
+    answer:
+      name: Customer Distribution by Location
+      description: Chart displays the distribution of customers based on their geographical coordinates
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Latitude] [Longitude] count [Customer Id]"
+      answer_columns:
+      - name: Latitude
+      - name: Longitude
+      - name: Number of Customer Id
+      table:
+        table_columns:
+        - column_id: Latitude
+          show_headline: false
+        - column_id: Longitude
+          show_headline: false
+        - column_id: Number of Customer Id
+          show_headline: false
+        ordered_column_ids:
+        - Latitude
+        - Longitude
+        - Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: GEO_BUBBLE
+        chart_columns:
+        - column_id: Latitude
+        - column_id: Longitude
+        - column_id: Number of Customer Id
+        axis_configs:
+        - x:
+          - Latitude
+          - Longitude
+          "y":
+          - Number of Customer Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"mapviewport\": {\"center\": [-1.2299325568349661E7,4791071.800236481],\"zoomLevel\": 4.411359620233602,\"extent\": [-1.709220604948893E7,2271407.0806813035,-7506445.087210395,7310736.519791659]},\"responsiveLayoutPreference\": \"AUTO_OFF\",\"chartSpecific\": {\"customProps\": \"{\\\"tileType\\\":\\\"light-v9\\\"}\",\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Latitude\",\"columnProperty\": {}},{\"columnId\": \"Longitude\",\"columnProperty\": {}},{\"columnId\": \"Number of Customer Id\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4f5516a7-ef2d-46aa-bea5-99eadf7fbf3a\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Customer Id\"],\"isOpposite\": false}},{\"id\": \"5900e8a7-6fe8-4048-ae2e-ae3bb2258b6d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Latitude\",\"Longitude\"]}}],\"systemSeriesColors\": [{\"serieName\": \"37f83d3f-0de5-4504-81b1-9ab6d5424784\",\"color\": \"#F04152\"},{\"serieName\": \"Number of Customer Id\",\"color\": \"#F04152\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: edc7fbfd-e01a-4c6c-a306-dff6cdcb2438
+  - id: Viz_23
+    answer:
+      name: Date of Joining
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      formulas:
+      - id: Date of Join
+        name: Date of Join
+        expr: "add_days ( [Opendate] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "[Date of Join] [Date of Join].detailed"
+      answer_columns:
+      - name: Date of Join
+      table:
+        table_columns:
+        - column_id: Date of Join
+          show_headline: false
+        ordered_column_ids:
+        - Date of Join
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Date of Join
+        axis_configs:
+        - "y":
+          - Date of Join
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Date of Join\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a44def31-e161-4d31-ad6d-6c210bffc5b1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Date of Join\"],\"isOpposite\": false}},{\"id\": \"8203e2f2-c1e4-4c6a-a2a5-cabab412a6de\",\"properties\": {\"axisType\": \"X\"}}]}"
+      display_mode: CHART_MODE
+    viz_guid: ce63efb1-1d33-4fe5-8ea4-6e81de10e822
+  - id: Viz_24
+    answer:
+      name: Number of days on Platform
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      formulas:
+      - id: Number of days on Platform
+        name: Number of days on Platform
+        expr: "diff_days ( today ( ) , [Date of Join] ) "
+        was_auto_generated: false
+      - id: Date of Join
+        name: Date of Join
+        expr: "add_days ( [Opendate] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "[Number of days on Platform] [Customer Id]"
+      answer_columns:
+      - name: Total Number of days on Platform
+      - name: Customer Id
+      table:
+        table_columns:
+        - column_id: Customer Id
+          show_headline: false
+        - column_id: Total Number of days on Platform
+          show_headline: false
+        ordered_column_ids:
+        - Customer Id
+        - Total Number of days on Platform
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Total Number of days on Platform\",\"columnProperty\": {}}]}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Customer Id
+        - column_id: Total Number of days on Platform
+        axis_configs:
+        - "y":
+          - Total Number of days on Platform
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Total Number of days on Platform\",\"columnProperty\": {}},{\"columnId\": \"Customer Id\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f50ad1c3-2ce1-4798-a269-34e75bbf9bb8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Number of days on Platform\"],\"isOpposite\": false}},{\"id\": \"efc64cd1-e0f7-4ef3-a3d3-6ca70b026688\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total Number of days on Platform\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 5c6afe52-ee08-44d8-bdf9-3ffddbdd12f6
+  - id: Viz_25
+    viz_guid: 9245df0d-aeef-44ea-a79f-41a51fa54cb0
+    note_tile:
+      html_parsed_string: <h2><b><strong class="theme-module__editor-text-bold">                                                                             </strong></b><span>Comprehensive Content Analysis</span></h2>
+  - id: Viz_26
+    answer:
+      name: Customer Name
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Customer Name]"
+      answer_columns:
+      - name: Customer Name
+      table:
+        table_columns:
+        - column_id: Customer Name
+          show_headline: false
+        ordered_column_ids:
+        - Customer Name
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Customer Name
+        axis_configs:
+        - "y":
+          - Customer Name
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 1898603e-9844-47a6-b52b-91dba40c5c7a
+  - id: Viz_27
+    answer:
+      name: Age Group
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Age Group]"
+      answer_columns:
+      - name: Age Group
+      table:
+        table_columns:
+        - column_id: Age Group
+          show_headline: false
+        ordered_column_ids:
+        - Age Group
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Age Group
+        axis_configs:
+        - "y":
+          - Age Group
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 44b6356f-2cde-435a-bd30-d0bbbf0d9f0f
+  - id: Viz_28
+    answer:
+      name: Customer Location
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Latitude] [Longitude] [average_viewtime]"
+      answer_columns:
+      - name: Latitude
+      - name: Longitude
+      - name: average_viewtime
+      table:
+        table_columns:
+        - column_id: Latitude
+          show_headline: false
+        - column_id: Longitude
+          show_headline: false
+        - column_id: average_viewtime
+          show_headline: false
+        ordered_column_ids:
+        - Latitude
+        - Longitude
+        - average_viewtime
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: GEO_BUBBLE
+        chart_columns:
+        - column_id: Latitude
+        - column_id: Longitude
+        - column_id: average_viewtime
+        axis_configs:
+        - x:
+          - Latitude
+          - Longitude
+          "y":
+          - average_viewtime
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Latitude\",\"columnProperty\": {}},{\"columnId\": \"Longitude\",\"columnProperty\": {}},{\"columnId\": \"average_viewtime\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"be429ad9-6d47-4d63-af37-84989fb33ad1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"average_viewtime\"],\"isOpposite\": false}},{\"id\": \"643baa80-66aa-4281-9fe0-57b9460f4ce0\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Latitude\",\"Longitude\"]}}],\"systemSeriesColors\": [{\"serieName\": \"average_viewtime\",\"color\": \"#F04152\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: cc41448b-14a8-4a62-917a-b00cd32f12e0
+  - id: Viz_29
+    answer:
+      name: Total View Duration (mins)
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      search_query: "[Viewruntime]"
+      answer_columns:
+      - name: Total Viewruntime
+      table:
+        table_columns:
+        - column_id: Total Viewruntime
+          show_headline: false
+        ordered_column_ids:
+        - Total Viewruntime
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Total Viewruntime
+        axis_configs:
+        - "y":
+          - Total Viewruntime
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: dcb226ab-993a-4492-8079-b016aa6f5228
+  - id: Viz_30
+    answer:
+      name: Average View Time Daily (mins)
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      formulas:
+      - id: Average time spent on platform per day
+        name: Average time spent on platform per day
+        expr: "( [Viewruntime] ) / ( [Number of days on Platform] )"
+        was_auto_generated: false
+      - id: Number of days on Platform
+        name: Number of days on Platform
+        expr: "diff_days ( today ( ) , [Date of Join] ) "
+        was_auto_generated: false
+      - id: Date of Join
+        name: Date of Join
+        expr: "add_days ( [Opendate] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "[Average time spent on platform per day]"
+      answer_columns:
+      - name: Total Average time spent on platform per day
+      table:
+        table_columns:
+        - column_id: Total Average time spent on platform per day
+          show_headline: false
+        ordered_column_ids:
+        - Total Average time spent on platform per day
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Total Average time spent on platform per day
+        axis_configs:
+        - "y":
+          - Total Average time spent on platform per day
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Total Average time spent on platform per day\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"0cc823ec-5d85-4ba9-83df-59aea49c27f2\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Average time spent on platform per day\"],\"isOpposite\": false}},{\"id\": \"d59e08ec-81db-45fe-b337-16999c492fa5\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 083bedd3-50a5-4550-a9d3-337dfced47ba
+  - id: Viz_31
+    answer:
+      name: Total Number of Episodes Watched
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      formulas:
+      - id: Number of days on Platform
+        name: Number of days on Platform
+        expr: "diff_days ( today ( ) , [Date of Join] ) "
+        was_auto_generated: false
+      - id: Date of Join
+        name: Date of Join
+        expr: "add_days ( [Opendate] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "unique count [Episode Primary Title]"
+      answer_columns:
+      - name: Unique Number of Episode Primary Title
+      table:
+        table_columns:
+        - column_id: Unique Number of Episode Primary Title
+          show_headline: false
+        ordered_column_ids:
+        - Unique Number of Episode Primary Title
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"columnProperty\": {}}]}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Episode Primary Title
+        axis_configs:
+        - "y":
+          - Unique Number of Episode Primary Title
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"columnProperty\": {}},{\"columnId\": \"63fb701d-514e-4123-a505-afa347dd8471\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f50ad1c3-2ce1-4798-a269-34e75bbf9bb8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"ee4318d4-a34c-4149-bbc7-13270ba82028\"],\"isOpposite\": false}},{\"id\": \"efc64cd1-e0f7-4ef3-a3d3-6ca70b026688\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 6a158f13-d466-4679-8ffb-9cebcd1b7592
+  - id: Viz_32
+    answer:
+      name: Total Number of Shows Watched
+      tables:
+      - id: Spotflix_forecast
+        name: Spotflix_forecast
+      formulas:
+      - id: Number of days on Platform
+        name: Number of days on Platform
+        expr: "diff_days ( today ( ) , [Date of Join] ) "
+        was_auto_generated: false
+      - id: Date of Join
+        name: Date of Join
+        expr: "add_days ( [Opendate] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "unique count [Show Primary Title]"
+      answer_columns:
+      - name: Unique Number of Show Primary Title
+      table:
+        table_columns:
+        - column_id: Unique Number of Show Primary Title
+          show_headline: false
+        ordered_column_ids:
+        - Unique Number of Show Primary Title
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"columnProperty\": {}}]}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Show Primary Title
+        axis_configs:
+        - "y":
+          - Unique Number of Show Primary Title
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"columnProperty\": {}},{\"columnId\": \"63fb701d-514e-4123-a505-afa347dd8471\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f50ad1c3-2ce1-4798-a269-34e75bbf9bb8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"ee4318d4-a34c-4149-bbc7-13270ba82028\"],\"isOpposite\": false}},{\"id\": \"efc64cd1-e0f7-4ef3-a3d3-6ca70b026688\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"ee4318d4-a34c-4149-bbc7-13270ba82028\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 65bc0708-5b2e-499f-9d93-6671dd6a833a
+  - id: Viz_33
+    answer:
+      name: Customer Churn and Joining Trends Over Time
+      description: Chart displays the quarter-to-date total customers Joined and total customers churned each day
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[No. of Customers Joined] [Date] [Date].daily [No. of Customers Churned] [Date].'quarter to date'"
+      answer_columns:
+      - name: Total No. of Customers Joined
+      - name: Day(Date)
+      - name: Total No. of Customers Churned
+      table:
+        table_columns:
+        - column_id: Day(Date)
+          show_headline: false
+        - column_id: Total No. of Customers Joined
+          show_headline: false
+        - column_id: Total No. of Customers Churned
+          show_headline: false
+        ordered_column_ids:
+        - Day(Date)
+        - Total No. of Customers Joined
+        - Total No. of Customers Churned
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Date)
+        - column_id: Total No. of Customers Joined
+        - column_id: Total No. of Customers Churned
+        axis_configs:
+        - x:
+          - Day(Date)
+          "y":
+          - Total No. of Customers Churned
+          - Total No. of Customers Joined
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true,\"legendPosition\": \"TOP_LEGEND\"},\"columnProperties\": [{\"columnId\": \"Day(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total No. of Customers Joined\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Total No. of Customers Churned\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"693f1274-9e7e-41c2-acb1-181b17a4aba8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total No. of Customers Churned\",\"Total No. of Customers Joined\"],\"isOpposite\": false}},{\"id\": \"baae3c5a-763e-4730-8645-3648c73fb020\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Date)\"],\"name\": \"Date\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total No. of Customers Joined\",\"color\": \"#2770ef\"},{\"serieName\": \"Total No. of Customers Churned\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: bd73962f-13d9-4133-8b69-0e7266b6fed9
+  - id: Viz_34
+    answer:
+      name: Total Customer Count Daily
+      description: Chart displays the quarter-to-date total customer count each day
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Customer Count] [Date].daily [Date].'quarter to date'"
+      answer_columns:
+      - name: Total Customer Count
+      - name: Day(Date)
+      table:
+        table_columns:
+        - column_id: Day(Date)
+          show_headline: false
+        - column_id: Total Customer Count
+          show_headline: false
+        ordered_column_ids:
+        - Day(Date)
+        - Total Customer Count
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Date)
+        - column_id: Total Customer Count
+        axis_configs:
+        - x:
+          - Day(Date)
+          "y":
+          - Total Customer Count
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Day(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Customer Count\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"dc2668f4-746a-4297-9ffa-6a9d75508429\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Customer Count\"],\"isOpposite\": false}},{\"id\": \"5e015d89-d368-4741-afb6-4c607fd34003\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Date)\"],\"name\": \"Date\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total Customer Count\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 2ea07ccf-9622-4997-b354-b9b230b72d3a
+  - id: Viz_35
+    answer:
+      name: Daily Percentage of Active Customers
+      description: Monthly Active Users
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      search_query: "[Active Subscriber Percentage] [Date] [Date].daily"
+      answer_columns:
+      - name: Total Active Subscriber Percentage
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 2.0
+          isCategoryEditable: true
+      - name: Day(Date)
+      table:
+        table_columns:
+        - column_id: Day(Date)
+          show_headline: false
+        - column_id: Total Active Subscriber Percentage
+          show_headline: false
+        ordered_column_ids:
+        - Day(Date)
+        - Total Active Subscriber Percentage
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Day(Date)
+        - column_id: Total Active Subscriber Percentage
+        axis_configs:
+        - x:
+          - Day(Date)
+          "y":
+          - Total Active Subscriber Percentage
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Active Subscriber Percentage\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"fa49e219-34f3-4050-847e-64ee8d86c21a\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Active Subscriber Percentage\"],\"isOpposite\": false}},{\"id\": \"9c27f527-af94-4859-8e83-d4882b5bc8e4\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Date)\"]}}],\"seriesColors\": [{\"serieName\": \"Total Active Subscriber Percentage\",\"color\": \"#06BF7F\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Active Subscriber Percentage\",\"color\": \"#2770ef\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 85d81272-5b9f-4ea9-a3dd-b9459bb898b7
+  - id: Viz_36
+    answer:
+      name: Average Number of days on Platform before churn
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: Num of days on Platform in Days
+        name: Num of days on Platform in Days
+        expr: "concat ( concat ( [numb of days string] , ' ' ) , 'days' )"
+        was_auto_generated: false
+      - id: numb of days string
+        name: numb of days string
+        expr: "to_string ( ceil ( average ( [Num of days on platform] ) ) )"
+        was_auto_generated: false
+      search_query: "[Num of days on Platform in Days]"
+      answer_columns:
+      - name: Num of days on Platform in Days
+      table:
+        table_columns:
+        - column_id: Num of days on Platform in Days
+          show_headline: false
+        ordered_column_ids:
+        - Num of days on Platform in Days
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Num of days on Platform in Days
+        axis_configs:
+        - "y":
+          - Num of days on Platform in Days
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Num of days on Platform in Days\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"8c53ed27-2913-4829-ac76-0dbecd2543cc\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Num of days on Platform in Days\"],\"isOpposite\": false}},{\"id\": \"ea578c1d-3a15-479c-af8c-08ff9878e6ac\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"0513fa77-1f9b-485e-a0c9-f31a0b315e8d\",\"color\": \"#141198\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 1e4480c9-285b-4cf0-a288-b47e11999978
+  - id: Viz_37
+    answer:
+      name: Churn Risk Trends Day Wise
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: forecasted dates f
+        name: forecasted dates f
+        expr: "add_days ( [Forecasted_dates] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "[Churn Risk] count [Customer Name] [Churn Risk] != '{Null}' [forecasted dates f] [forecasted dates f].daily [forecasted dates f].'this week' [forecasted dates f].'next week'"
+      answer_columns:
+      - name: Churn Risk
+      - name: Number of Customer Name
+      - name: Day(forecasted dates f)
+      table:
+        table_columns:
+        - column_id: Churn Risk
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Day(forecasted dates f)
+          headline_aggregation: MIN-MAX
+        - column_id: Number of Customer Name
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Churn Risk
+        - Day(forecasted dates f)
+        - Number of Customer Name
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Churn Risk
+        - column_id: Day(forecasted dates f)
+        - column_id: Number of Customer Name
+        axis_configs:
+        - x:
+          - Day(forecasted dates f)
+          "y":
+          - Number of Customer Name
+          color:
+          - Churn Risk
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Churn Risk\",\"columnProperty\": {}},{\"columnId\": \"Day(forecasted dates f)\",\"columnProperty\": {}},{\"columnId\": \"Number of Customer Name\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"6606398d-3f04-4a78-904a-545db06bc3fd\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of Customer Name\"],\"isOpposite\": false}},{\"id\": \"09b286e5-b583-427f-9cce-f91463dcd3c0\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(forecasted dates f)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"high risk\",\"color\": \"#369faa\"},{\"serieName\": \"low risk\",\"color\": \"#48D1E0\"},{\"serieName\": \"medium risk\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 2257f302-fd69-4806-a3a5-9eb9d97de471
+  - id: Viz_38
+    answer:
+      name: Churn Risk in Next 1 Month
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: forecasted dates f
+        name: forecasted dates f
+        expr: "add_days ( [Forecasted_dates] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      search_query: "[Churn Risk 1m]"
+      answer_columns:
+      - name: Churn Risk 1m
+      table:
+        table_columns:
+        - column_id: Churn Risk 1m
+          show_headline: false
+        ordered_column_ids:
+        - Churn Risk 1m
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Churn Risk 1m
+        axis_configs:
+        - "y":
+          - Churn Risk 1m
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Churn Risk 1m\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a6ae1217-8978-44d4-b4f8-eb7486d5e310\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Churn Risk 1m\"],\"isOpposite\": false}},{\"id\": \"7fb7ee77-a29a-4ebd-9c19-540e1eaba727\",\"properties\": {\"axisType\": \"X\"}}]}"
+      display_mode: CHART_MODE
+    viz_guid: 5568efe3-22bd-4be6-915f-768df374bf4f
+  - id: Viz_39
+    answer:
+      name: Churn Rate Each Day (last 1 year and next 2 months)
+      tables:
+      - id: Spotflix_Cx_Shows
+        name: Spotflix_Cx_Shows
+      formulas:
+      - id: churn rate based on viewing time
+        name: churn rate based on viewing time
+        expr: "( ( count_if ( [Churn Risk] = 'high risk' , [Customer Name] ) / ( count ( [Customer Name] ) ) ) )"
+        was_auto_generated: false
+      - id: forecasted dates f
+        name: forecasted dates f
+        expr: "add_days ( [Forecasted_dates] , diff_days ( today ( ) , 07/26/2019 ) )"
+        was_auto_generated: false
+      - id: churned_cx
+        name: churned_cx
+        expr: "count_if ( [Churn Risk] = 'high risk' or [Churn Risk] = 'medium risk' , [Customer Name] )"
+        was_auto_generated: false
+      - id: high risk count
+        name: high risk count
+        expr: "count_if ( [Churn Risk] = 'high risk' , [Customer Name] )"
+        was_auto_generated: false
+      - id: medium risk count
+        name: medium risk count
+        expr: "count_if ( [Churn Risk] = 'medium risk' , [Customer Name] )"
+        was_auto_generated: false
+      - id: total cx
+        name: total cx
+        expr: "count ( [Customer Name] )"
+        was_auto_generated: false
+      search_query: "[churn rate based on viewing time] [forecasted dates f] [forecasted dates f].daily [forecasted dates f].'this year' [forecasted dates f].'next 2 months'"
+      answer_columns:
+      - name: churn rate based on viewing time
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 2.0
+          isCategoryEditable: true
+      - name: Day(forecasted dates f)
+      table:
+        table_columns:
+        - column_id: Day(forecasted dates f)
+          show_headline: false
+        - column_id: churn rate based on viewing time
+          show_headline: false
+        ordered_column_ids:
+        - Day(forecasted dates f)
+        - churn rate based on viewing time
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"churn rate based on viewing time\",\"columnProperty\": {}}]}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(forecasted dates f)
+        - column_id: churn rate based on viewing time
+        axis_configs:
+        - x:
+          - Day(forecasted dates f)
+          "y":
+          - churn rate based on viewing time
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"churn rate based on viewing time\",\"columnProperty\": {}},{\"columnId\": \"Day(forecasted dates f)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f9e94548-36c3-485d-9d78-d5ef1d4245f7\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"churn rate based on viewing time\"],\"isOpposite\": false}},{\"id\": \"e4bb1554-821e-4029-b9db-884889c22b14\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(forecasted dates f)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"churn rate based on viewing time\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: dd924bb4-20b2-4738-828a-70f8d8a5cc0a
+  filters:
+  - column:
+    - Spotflix_forecast::Customer Id
+    oper: in
+    values:
+    - "6"
+    excluded_visualizations:
+    - Viz_4
+    is_mandatory: false
+    is_single_value: true
+    display_name: ""
+  layout:
+    tabs:
+    - name: Customer Churn Analysis
+      description: ""
+      tiles:
+      - visualization_id: Viz_1
+        x: 0
+        "y": 11
+        height: 2
+        width: 4
+      - visualization_id: Viz_2
+        x: 8
+        "y": 7
+        height: 4
+        width: 4
+      - visualization_id: Viz_3
+        x: 4
+        "y": 13
+        height: 4
+        width: 8
+      - visualization_id: Viz_4
+        x: 0
+        "y": 37
+        height: 6
+        width: 12
+      - visualization_id: Viz_5
+        x: 3
+        "y": 55
+        height: 6
+        width: 9
+      - visualization_id: Viz_6
+        x: 0
+        "y": 0
+        height: 3
+        width: 3
+      - visualization_id: Viz_7
+        x: 0
+        "y": 3
+        height: 2
+        width: 3
+      - visualization_id: Viz_8
+        x: 0
+        "y": 5
+        height: 2
+        width: 3
+      - visualization_id: Viz_9
+        x: 3
+        "y": 0
+        height: 7
+        width: 4
+      - visualization_id: Viz_10
+        x: 4
+        "y": 7
+        height: 4
+        width: 4
+      - visualization_id: Viz_12
+        x: 7
+        "y": 0
+        height: 2
+        width: 5
+      - visualization_id: Viz_14
+        x: 0
+        "y": 13
+        height: 8
+        width: 4
+      - visualization_id: Viz_15
+        x: 4
+        "y": 17
+        height: 4
+        width: 8
+      - visualization_id: Viz_16
+        x: 0
+        "y": 58
+        height: 3
+        width: 3
+      - visualization_id: Viz_17
+        x: 0
+        "y": 55
+        height: 3
+        width: 3
+      - visualization_id: Viz_18
+        x: 8
+        "y": 29
+        height: 2
+        width: 4
+      - visualization_id: Viz_19
+        x: 8
+        "y": 27
+        height: 2
+        width: 4
+      - visualization_id: Viz_20
+        x: 8
+        "y": 25
+        height: 2
+        width: 4
+      - visualization_id: Viz_21
+        x: 0
+        "y": 21
+        height: 4
+        width: 6
+      - visualization_id: Viz_22
+        x: 7
+        "y": 2
+        height: 5
+        width: 5
+      - visualization_id: Viz_13
+        x: 6
+        "y": 21
+        height: 4
+        width: 6
+      - visualization_id: Viz_25
+        x: 0
+        "y": 54
+        height: 1
+        width: 12
+      - visualization_id: Viz_33
+        x: 0
+        "y": 48
+        height: 6
+        width: 12
+      - visualization_id: Viz_34
+        x: 0
+        "y": 43
+        height: 5
+        width: 12
+      - visualization_id: Viz_35
+        x: 0
+        "y": 7
+        height: 4
+        width: 4
+      - visualization_id: Viz_36
+        x: 4
+        "y": 11
+        height: 2
+        width: 4
+      - visualization_id: Viz_37
+        x: 0
+        "y": 25
+        height: 6
+        width: 8
+      - visualization_id: Viz_39
+        x: 0
+        "y": 31
+        height: 6
+        width: 12
+    - name: User Profile
+      description: ""
+      tiles:
+      - visualization_id: Viz_11
+        x: 0
+        "y": 2
+        height: 4
+        width: 6
+      - visualization_id: Viz_23
+        x: 6
+        "y": 2
+        height: 2
+        width: 3
+      - visualization_id: Viz_24
+        x: 6
+        "y": 4
+        height: 2
+        width: 3
+      - visualization_id: Viz_26
+        x: 0
+        "y": 0
+        height: 2
+        width: 3
+      - visualization_id: Viz_27
+        x: 3
+        "y": 0
+        height: 2
+        width: 3
+      - visualization_id: Viz_28
+        x: 9
+        "y": 0
+        height: 6
+        width: 3
+      - visualization_id: Viz_29
+        x: 3
+        "y": 6
+        height: 2
+        width: 3
+      - visualization_id: Viz_30
+        x: 0
+        "y": 6
+        height: 2
+        width: 3
+      - visualization_id: Viz_31
+        x: 9
+        "y": 6
+        height: 2
+        width: 3
+      - visualization_id: Viz_32
+        x: 6
+        "y": 6
+        height: 2
+        width: 3
+      - visualization_id: Viz_38
+        x: 6
+        "y": 0
+        height: 2
+        width: 3
