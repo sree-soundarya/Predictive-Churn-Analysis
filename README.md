@@ -1,11 +1,11 @@
 # 🚀 Spotflix Churn Prediction and Forecast
 
-Ever wondered how streaming platforms keep you hooked? Well, churn prediction is their secret sauce! 🍿 Churn prediction is like having a crystal ball for customer behavior. It helps predict when users might decide to bid farewell to our streaming haven.
+Ever wondered how streaming platforms keep you hooked? Well, churn prediction is their secret weapon! 🍿 behavior. It's a crystal ball for understanding customer behavior, foreseeing when users might say goodbye to our streaming world.
 
-Now, how do we pull off this streaming magic? 🎩✨ Using the treasure trove of data from Spotflix, we dive deep into user interactions, preferences, and habits. It's like a backstage pass to understand what keeps users binging and what might make them hit pause. Join us on this journey to peek into the future of streaming engagement! 🚀🎬
+So, how does this magic work?  🎩✨ With Spotflix's data treasure, we explore user interactions, preferences, and habits. It's like a backstage pass helping us figure out what makes users binge-watch and what might make them take a break. Come along as we explore the future of streaming engagement! 🚀🎬
 
 ## Overview 
-This project combines the power of Snowflake, Snowpark Python, and machine learning to predict customer churn and forecast user engagement patterns. We delve into customer demographics, show data, and subscription information to unravel insights that drive strategic decisions.
+In this project, we use Snowflake, Snowpark Python, and machine learning to predict customer churn and forecast user engagement patterns. We dive into customer demographics, show data, and subscription information to uncover insights that guide strategic decisions.
 
 ## Churn Prediction
 
@@ -23,13 +23,13 @@ Before diving into machine learning, we perform crucial data preprocessing steps
 - Data Cleaning: Tidy up the dataset by handling missing values, ensuring consistency, and imputing null values strategically.
 - Encoding: Prepare the data for model training by encoding categorical columns.
 
-### 🌍 Each region tells a tale, and here's where you get to know Who's staying, who's bidding farewell 
+### 🌍 Discover who's sticking around and who's saying goodbye 
 <img src = "images/churn_by_region.png" >
 
 ### Feature Selection and Model Training
 Prior to training machine learning models, we conduct feature selection using chi-square test. The selection is based on significant columns identified through chi-square testing. Finally, we train a Random Forest model, evaluating performance metrics like MSE and R2.
 
-### 🎲 Rolling the Dice on Features : Behold the drama, the suspense, and the significance each feature brings to our churn prediction game. It's a scorecard of impact! 📊
+### 🎲 Exploring Features: Dive into the impact each feature adds to our churn prediction game. 📊
 <img src = "images/chi2testresult.png" width = 400 height = 300>
 
 ### Heatmap of Confusion Matrix: it's a glimpse into the accuracy and missteps of our churn predictions.
@@ -62,3 +62,5 @@ Now our XGBoost model is ready to start forecasting customer viewing pattern for
 ### Witness how we predict engagement levels and pinpoint those high-risk viewers 🌟
 <img src = "images/customer_engagement.png" >
 
+## Guide to use .tml files
+For step-by-step instructions on how to import .tml files into your ThoughtSpot cluster please refer [How to use TML files](https://docs.thoughtspot.com/cloud/latest/scriptability#_how_to_use_tml_files)
