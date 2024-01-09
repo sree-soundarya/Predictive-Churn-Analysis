@@ -1,11 +1,11 @@
 # 🚀 Spotflix Churn Prediction and Forecast
 
-Ever wondered how streaming platforms keep you hooked? Well, churn prediction is their secret weapon! 🍿 behavior. It's a crystal ball for understanding customer behavior, foreseeing when users might say goodbye to our streaming world.
+Ever wondered how streaming platforms keep you hooked? Well, churn prediction is their secret weapon! It's a crystal ball for understanding customer behavior, foreseeing when users might say goodbye to our streaming world.
 
-So, how does this magic work?  🎩✨ With Spotflix's data treasure, we explore user interactions, preferences, and habits. It's like a backstage pass helping us figure out what makes users binge-watch and what might make them take a break. Come along as we explore the future of streaming engagement! 🚀🎬
+So, how does this magic work? 🎩✨ With subscription streaming service Spotflix's data treasure, we explore user interactions, preferences, and habits. It's like a backstage pass helping us figure out what makes users binge-watch and what might make them take a break. Come along as we explore the future of streaming engagement with actionable insights delivered on ThoughtSpot’s AI-powered analytics platform! 🚀🎬
+Overview
+In this project, we use Snowflake, Python, machine learning, and ThoughtSpot to predict customer churn and forecast user engagement patterns. We use ThoughtSpot’s AI-powered search experience and interactive liveboards to explore customer demographics and subscription information to uncover insights and run forecasts that guide strategic decisions. 
 
-## Overview 
-In this project, we use Snowflake, Snowpark Python, and machine learning to predict customer churn and forecast user engagement patterns. We dive into customer demographics, show data, and subscription information to uncover insights that guide strategic decisions.
 
 ## Churn Prediction
 
